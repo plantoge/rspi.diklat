@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<link href="{{asset('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
 		<style>
 			@keyframes blink {
 				0% { opacity: 1; }
@@ -399,22 +400,10 @@
 						<div class="content flex-row-fluid" id="kt_content">
 							<div class="card">
 								<div class="card-body p-lg-17">
-
 									{{-- @php
-										dd(Request::segment(1));
+									dd(Request::segment(1));
 									@endphp --}}
-
-									{{-- @if(Request::segment(1) == 'about-us')
-
-										@include('layout.website.include.aboutus')
-
-									@elseif(Request::segment(1) == 'agenda')
-
-										@include('layout.website.include.agenda')
-
-									@elseif(Request::segment(1) == 'kelas')
-
-										@include('layout.website.include.kelas') --}}
+									@include('layout.website.include.notif')
 
 									@yield('konten')
 
@@ -536,9 +525,14 @@
 						<div class="separator d-flex flex-center mb-8">
 							<span class="text-uppercase bg-body fs-7 fw-bold text-muted px-3">atau</span>
 						</div>
-						<input type="text" class="form-control form-control-solid mb-8" placeholder="Email">
-						<input type="password" class="form-control form-control-solid mb-8" placeholder="Password">
-						<button class="btn btn-md btn-bg-success w-100 fw-bold text-white">Sign In</button>
+						<form action="{{url('auth-post-signup')}}" method="post">
+							@csrf
+							<input type="text" class="form-control form-control-solid mb-8" name="name" placeholder="Name">
+							<input type="email" class="form-control form-control-solid mb-8" name="email" placeholder="Email">
+							<input type="password" class="form-control form-control-solid mb-8" name="password" placeholder="Password">
+							<input type="password" class="form-control form-control-solid mb-8" name="password_confirmation" placeholder="Ulangi Password">
+							<button type="submit" class="btn btn-md btn-bg-success w-100 fw-bold text-white">Sign Up</button>
+						</form>
 						{{-- <button class="btn btn-md btn-bg-secondary w-100 fw-bold text-dark">Sign Up</button></button> --}}
 						
 						{{-- <div class="d-flex flex-stack">
@@ -571,5 +565,7 @@
 		<script src="{{asset('public/Twebsite/v1/plugins/custom/fslightbox/fslightbox.bundle.js')}}"></script>
 		<script src="{{asset('public/Twebsite/v1/js/custom/widgets.js')}}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.js')}}"></script>
+		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
 	</body>
 </html>

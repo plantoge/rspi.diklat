@@ -13,7 +13,11 @@ Route::get('/info-kelas/{slug}/{id}', [websiteController::class, 'infokelas']);
 Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas']);
 Route::get('/about-us', [websiteController::class, 'aboutus']);
 Route::get('/agenda', [websiteController::class, 'agenda']);
+
+Route::get('/auth-sign-in', [loginController::class, 'indexlogin'])->name('login');
+Route::get('/auth-sign-up', [loginController::class, 'indexregister'])->name('register');
 Route::post('/auth-post-signin', [loginController::class, 'postlogin']);
+Route::post('/auth-post-signup', [loginController::class, 'postregister']);
 Route::get('/auth-signout', [loginController::class, 'signout']);
 
 // dashboard Pegawai
