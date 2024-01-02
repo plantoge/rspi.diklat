@@ -1,61 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\diklat\web;
+namespace App\Http\Controllers\diklat\panel;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class websiteController extends Controller
+class panelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function beranda()
+    public function panel()
     {
-        return view('amodule/diklat/web/beranda', [
+        // dd(Auth::check());
+        return view('amodule/diklat/panel/panel', [
             '' => ''
         ]);
     }
 
-    public function aboutus()
+    public function index()
     {
-        return view('amodule/diklat/web/aboutus', [
-            '' => ''
-        ]);
-    }
-
-    public function agenda()
-    {
-        return view('amodule/diklat/web/agenda', [
-            '' => ''
-        ]);
-    }
-
-    public function kelas()
-    {
-        return view('amodule/diklat/web/kelas', [
-            '' => ''
-        ]);
-    }
-
-    public function infokelas($slug, $id)
-    {
-        // dd($slug, $id);
-        return view('amodule/diklat/web/infokelas', [
-            'slug' => $slug,
-            'id' => $id,
-        ]);
-    }
-
-    public function cokelas($slug, $id)
-    {
-        return view('amodule/diklat/web/cokelas', [
-            'slug' => $slug,
-            'id' => $id,
-        ]);
+        //
     }
 
     /**

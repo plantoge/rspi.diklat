@@ -64,9 +64,17 @@ class loginController extends Controller
         }
 
         $store = New users();
+        $store->status_pegawai = 'visitor';
+        $store->nip = null;
+        $store->name = $request->name;
+        $store->username = $request->email;
+        $store->password = bcrypt($request->password);
+        $store->email = $request->email;
+        $store->save();
+
         // Logic for successful validation
         session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Data Ditambahkan');
+        session()->flash('pesan', 'Berhasil Daftar akun');
         return redirect('/auth-sign-in');
     }
 }

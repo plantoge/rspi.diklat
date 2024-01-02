@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\diklat\panel\eventController;
 use App\Http\Controllers\diklat\panel\loginController;
+use App\Http\Controllers\diklat\panel\panelController;
 use App\Http\Controllers\diklat\web\websiteController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
@@ -28,8 +30,9 @@ Route::post('/rstore', 'AuthController@store');
 Route::get('/logout', 'AuthController@logout');
 
 // dashboard customer
-Route::group(['middleware' => ['checkrole:superadmin']], function(){
-    Route::get('/panel', [websiteController::class, 'admin']);
+Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
+    Route::get('/panel', [panelController::class, 'panel']);
+    Route::get('/events', [eventController::class, 'index']);
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){

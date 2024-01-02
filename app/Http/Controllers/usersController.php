@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -22,12 +23,9 @@ class usersController extends Controller
 
         // dd('stop');
         
-        $users = \App\User::all();
-        $userwithrole = \App\User::with('roles')->get();
-
+        $users = users::all();
         return view('rolepermission.users.index', [
             'Musers' => $users,
-            'Muserswithrole' => $userwithrole
         ]);
     }
 
@@ -38,13 +36,12 @@ class usersController extends Controller
 
     public function store(Request $request)
     {
-        $user = New \App\User;
+        $user = New users();
         $user->nip = $request->nip; 
         $user->name = $request->name; 
         $user->email = $request->email; 
         $user->username = $request->username; 
         $user->password = bcrypt($request->password); 
-        $user->role = $request->role; 
         // $user->role = 'user'; 
         $user->save(); 
 
@@ -66,14 +63,13 @@ class usersController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = \App\User::find($id);
+        $user = users::find($id);
 
         $user->nip = $request->nip; 
         $user->name = $request->name; 
         $user->email = $request->email; 
         $user->username = $request->username; 
         $user->password = bcrypt($request->password); 
-        $user->role = $request->role; 
         $user->save();
         // $user->update($request->all());
 

@@ -366,8 +366,8 @@ class ComposerStaticInitd091a9b5d495f0a4a40b714fe81c7abc
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -618,8 +618,9 @@ class ComposerStaticInitd091a9b5d495f0a4a40b714fe81c7abc
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\SetelanController' => __DIR__ . '/../..' . '/app/Http/Controllers/SetelanController.php',
         'App\\Http\\Controllers\\assignroleController' => __DIR__ . '/../..' . '/app/Http/Controllers/assignroleController.php',
+        'App\\Http\\Controllers\\diklat\\panel\\loginController' => __DIR__ . '/../..' . '/app/Http/Controllers/diklat/panel/loginController.php',
+        'App\\Http\\Controllers\\diklat\\web\\websiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/diklat/web/websiteController.php',
         'App\\Http\\Controllers\\givepermissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/givepermissionController.php',
-        'App\\Http\\Controllers\\module\\reporttindakanController' => __DIR__ . '/../..' . '/app/Http/Controllers/module/reporttindakanController.php',
         'App\\Http\\Controllers\\pdfController' => __DIR__ . '/../..' . '/app/Http/Controllers/pdfController.php',
         'App\\Http\\Controllers\\permissionController' => __DIR__ . '/../..' . '/app/Http/Controllers/permissionController.php',
         'App\\Http\\Controllers\\roleController' => __DIR__ . '/../..' . '/app/Http/Controllers/roleController.php',

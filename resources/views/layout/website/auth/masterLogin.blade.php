@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="fv-row mb-7">
-                            <input class="form-control form-control-lg form-control-solid" type="text" placeholder="Password" name="password" autocomplete="off" />
+                            <input class="form-control form-control-lg form-control-solid" type="password" placeholder="Password" name="password" autocomplete="off" />
                         </div>
                         <div class="text-center">
                             <button type="submit" id="kt_sign_up_submit" class="btn btn-lg btn-primary w-100">

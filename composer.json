@@ -18,6 +18,7 @@
         "league/flysystem-sftp": "^1.1",
         "maatwebsite/excel": "^3.1",
         "phpseclib/phpseclib": "^2.0",
+        "ramsey/uuid": "^4.2",
         "riskihajar/terbilang": "^1.2",
         "spatie/laravel-permission": "^3.17",
         "yajra/laravel-datatables-oracle": "~9.0"
