@@ -33,6 +33,8 @@ Route::get('/logout', 'AuthController@logout');
 Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
     Route::get('/panel', [panelController::class, 'panel']);
     Route::get('/events', [eventController::class, 'index']);
+    Route::get('/events/create', [eventController::class, 'create'])->name('create-event');
+    Route::post('/events/store', [eventController::class, 'store'])->name('store-event');
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){
