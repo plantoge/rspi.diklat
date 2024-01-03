@@ -3,7 +3,7 @@
 	<head><base href="../">
 		<title>Diklat by RSPISS</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		{{-- <meta name="description" content="Ceres admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
 		<meta name="keywords" content="Ceres theme, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard" />
 		<meta charset="utf-8" />
@@ -20,6 +20,7 @@
 		<link href="{{asset('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
+		@yield('css')
 		<style>
 			@keyframes blink {
 				0% { opacity: 1; }
@@ -561,6 +562,7 @@
 		</div>
 
 		<script>var hostUrl = "v1/";</script>
+		<script src="{{url('public/Tdashboard/v2/js/jquery-3.6.3.min.js')}}"></script>
 		<script src="{{asset('public/Twebsite/v1/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('public/Twebsite/v1/js/scripts.bundle.js')}}"></script>
 		<script src="{{asset('public/Twebsite/v1/plugins/custom/fslightbox/fslightbox.bundle.js')}}"></script>
@@ -568,5 +570,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 		<script src="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.js')}}"></script>
 		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
+		@yield('js')
 	</body>
 </html>

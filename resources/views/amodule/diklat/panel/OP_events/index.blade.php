@@ -6,11 +6,17 @@
     <style>
         .dt-buttons {
             float: left !important;
-            align-items: middle; 
         }
-
+        .dt-buttons button {
+            font-size: 11px !important;
+        }
+        
         .buttons-html5, .buttons-print {
             padding: 0.5em !important;
+        }
+        
+        .dataTables_info {
+            float: left !important;
         }
     </style>
 @endsection
@@ -41,19 +47,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @foreach ($event as $data)
+                        
+                    <tr class="align-middle">
+                        <td>{{$data->EVENT_JUDUL}}</td>    
+                        <td>{{$data->EVENT_KATEGORI}}</td>    
+                        <td>@matauang($data->EVENT_HARGA)</td>    
                         <td>
-                            <p>
-                                Lorem ipsum dolor sit amet
-                            </p>
+                            @if($data->EVENT_ACTIVE == 'Publish')
+                            <span class="badge badge-success">{{$data->EVENT_ACTIVE}}</span>
+                            @elseif($data->EVENT_ACTIVE == 'Arsip')
+                            <span class="badge badge-danger">{{$data->EVENT_ACTIVE}}</span>
+                            @endif
                         </td>
-                        <td>Kelas</td>
-                        <td>Rp. </td>
-                        <td>Aktif</td>
                         <td>
-                            <button class="btn btn-primary btn-sm">Delete</button>
+                            <a href="{{url('events/' .$data->EVENT_ID. '/edit')}}" class="btn btn-primary btn-sm w-100">Edit</a>
+                            <br>
+                            {{-- <button class="btn btn-warning btn-sm w-100 text-dark">Detail</button> --}}
+                            {{-- <br> --}}
+                            <form action="{{url('events/' .$data->EVENT_ID. '/delete')}}" method="post">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm w-100" onclick="return confirm('Yakin dihapus ?')">Delete</button>
+                            </form>
                         </td>
+
                     </tr>
+
+                    @endforeach
                     
                 </tbody>
                 <tfoot>

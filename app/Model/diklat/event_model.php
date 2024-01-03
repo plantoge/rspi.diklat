@@ -9,6 +9,7 @@ class event_model extends Model
 {
     public $incrementing = false;
     protected $keyType = 'string';
+    protected $primaryKey = 'EVENT_ID';
 
     // protected $connection = 'DB_core';
     protected $table = "events";
@@ -21,6 +22,8 @@ class event_model extends Model
         'EVENT_KATEGORI',
         'EVENT_HARGA',
         'EVENT_GAMBAR',
+        'EVENT_JADWAL_AWAL',
+        'EVENT_JADWAL_AKHIR',
         'EVENT_ACTIVE',
     ];
 

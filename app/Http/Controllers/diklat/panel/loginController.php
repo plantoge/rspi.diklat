@@ -77,4 +77,8 @@ class loginController extends Controller
         session()->flash('pesan', 'Berhasil Daftar akun');
         return redirect('/auth-sign-in');
     }
+
+    public function checksignin(){
+        echo json_encode(auth()->check());
+    }
 }

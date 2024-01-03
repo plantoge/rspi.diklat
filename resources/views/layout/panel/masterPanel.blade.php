@@ -14,12 +14,15 @@
 		<link rel="canonical" href="Https://preview.keenthemes.com/ceres-html-free" />
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" /> --}}
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 		<link href="{{url('public/Twebsite/v1/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{url('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{url('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
 		@yield('css')
 	</head>
 	<body id="kt_body" style="background-image: url({{url('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled">
+		@include('layout.website.include.notif')
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
@@ -437,7 +440,10 @@
 		<script src="{{url('public/Twebsite/v1/js/scripts.bundle.js')}}"></script>
 		<script src="{{url('public/Twebsite/v1/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
 		<script src="{{url('public/Twebsite/v1/js/custom/widgets.js')}}"></script>
-
+		<script src="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.js')}}"></script>
+		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
+		<script src="{{url('public/Plugin/moment/moment.js')}}"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 		@yield('js')
 	</body>
 </html>

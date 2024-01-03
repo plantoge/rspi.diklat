@@ -83,10 +83,45 @@
                 <span class="badge badge-primary">Kategori</span>
                 <br>
                 <br>
-                <a href="{{url('checkout-kelas/'.$slug.'/'.$id)}}" class="btn btn-primary w-100">Beli sekarang</a>
+                <a class="btn btn-primary w-100" onclick="checkSignin('{{$slug}}', '{{$id}}')">Beli sekarang</a>
+                {{-- href="{{url('checkout-kelas/'.$slug.'/'.$id)}}" --}}
             </div>
         </div>
     
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    async function checkSignin(slug, id) {
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const response = await fetch("<?= url('auth-check-signin'); ?>", {
+                method: 'POST',
+                headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                'id': 'fauzi'
+                })
+            });
+            let data = await response.json();
+            console.log(data);
+
+            if(data == false){
+                $('#modal_login').modal('show');
+            }else{
+                window.location.href=`{{url('/checkout-kelas/${slug}/${id}')}}`;
+            }
+            // let deposit = data.sisa_uang_muka;
+            
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+</script>
+
 @endsection

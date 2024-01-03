@@ -5,6 +5,7 @@ namespace App\Http\Controllers\diklat\panel;
 use App\Http\Controllers\Controller;
 use App\Model\diklat\event_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class eventController extends Controller
@@ -16,9 +17,9 @@ class eventController extends Controller
      */
     public function index()
     {
-        
+        $event = event_model::orderBy('created_at', 'desc')->get();
         return view('amodule/diklat/panel/OP_events/index', [
-
+            'event' => $event
         ]);
     }
 
@@ -41,7 +42,7 @@ class eventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $rule = [
             'judul' => ['required'],
             'deskripsi_singkat' => ['required'],
@@ -49,6 +50,7 @@ class eventController extends Controller
             'harga' => ['required'],
             'deskripsi' => ['required'],
             'status' => ['required'],
+            'jadwal_kegiatan' => ['required'],
             'gambar' => ['required', 'max:2048', 'mimes:jpeg,jpg,png'],
         ];
 
@@ -60,6 +62,7 @@ class eventController extends Controller
             'deskripsi.required' => 'Kolom deskripsi harus diisi.',
             'status.required' => 'Kolom status harus diisi.',
             'gambar.required' => 'Kolom ini harus diisi.',
+            'jadwal_kegiatan.required' => 'Kolom ini harus diisi.',
             'gambar.max' => 'Kolom ini maksimal :max .',
             'gambar.mimes' => 'Kolom ini harus berupa file dengan ekstensi jpeg, jpg, png.',
             // 'password.min' => 'Panjang password minimal :min karakter.',
@@ -79,8 +82,12 @@ class eventController extends Controller
             $filename = basename($path);
         }
 
+        // rapikan
         $harga1 = str_replace(".", "", $request->harga);
         $harga = str_replace(",", ".", $harga1);
+        $exp = explode(' / ', $request->jadwal_kegiatan);
+        $jadwal_awal = $exp[0];
+        $jadwal_akhir = $exp[1];
 
         $store = new event_model();
         $store->EVENT_JUDUL = $request->judul;
@@ -90,6 +97,8 @@ class eventController extends Controller
         $store->EVENT_KATEGORI = $request->kategori;
         $store->EVENT_HARGA = $harga;
         $store->EVENT_GAMBAR = $filename;
+        $store->EVENT_JADWAL_AWAL = $jadwal_awal;
+        $store->EVENT_JADWAL_AKHIR = $jadwal_akhir;
         $store->EVENT_ACTIVE = $request->status;
         $store->Save();
 
@@ -119,7 +128,13 @@ class eventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = event_model::where('EVENT_ID', $id)->first();
+
+        return view('amodule/diklat/panel/OP_events/edit', [
+            'event' => $event,
+            'id' => $id,
+
+        ]);
     }
 
     /**
@@ -131,7 +146,41 @@ class eventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = event_model::where('EVENT_ID', $id)->first();
+
+            $filename = $update->EVENT_GAMBAR;
+
+            if ($request->file('gambar')) {
+                $check    = Storage::disk('local')->delete('/gambar_event/' . $filename);
+                $file     = $request->file('gambar'); 
+                $path     = $file->store('gambar_event', 'local'); // proses upload file
+                $filename = basename($path);
+                
+                // masukkan ke query
+                $update->EVENT_GAMBAR = $filename;
+            }
+
+            $harga1 = str_replace(".", "", $request->harga);
+            $harga = str_replace(",", ".", $harga1);
+            $exp = explode(' / ', $request->jadwal_kegiatan);
+            $jadwal_awal = $exp[0];
+            $jadwal_akhir = $exp[1];
+        
+        $update->EVENT_JUDUL = $request->judul;
+        $update->EVENT_SLUG = $request->slug;
+        $update->EVENT_DESKRIPSI_SINGKAT = $request->deskripsi_singkat;
+        $update->EVENT_DESKRIPSI_PANJANG = $request->deskripsi;
+        $update->EVENT_KATEGORI = $request->kategori;
+        $update->EVENT_HARGA = $harga;
+        $update->EVENT_JADWAL_AWAL = $jadwal_awal;
+        $update->EVENT_JADWAL_AKHIR = $jadwal_akhir;
+        $update->EVENT_ACTIVE = $request->status;
+        $update->Save();
+
+        // Logic for successful validation
+        session()->flash('keyword', 'TambahData');
+        session()->flash('pesan', 'Event Diubah');
+        return redirect('/events');
     }
 
     /**
@@ -142,6 +191,13 @@ class eventController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $event = event_model::findorfail($id);
+        $check = Storage::disk('local')->delete('/gambar_event/' . $event->EVENT_GAMBAR);
+        $event->delete();
+
+        session()->flash('keyword', 'Alert');
+        session()->flash('pesan', 'Event dihapus');
+        return redirect('/events');
     }
 }

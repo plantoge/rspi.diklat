@@ -12,11 +12,11 @@ use App\User;
 Route::get('/', [websiteController::class, 'beranda']);
 Route::get('/kelas', [websiteController::class, 'kelas']);
 Route::get('/info-kelas/{slug}/{id}', [websiteController::class, 'infokelas']);
-Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas']);
 Route::get('/about-us', [websiteController::class, 'aboutus']);
 Route::get('/agenda', [websiteController::class, 'agenda']);
 
 Route::get('/auth-sign-in', [loginController::class, 'indexlogin'])->name('login');
+Route::post('/auth-check-signin', [loginController::class, 'checksignin']);
 Route::get('/auth-sign-up', [loginController::class, 'indexregister'])->name('register');
 Route::post('/auth-post-signin', [loginController::class, 'postlogin']);
 Route::post('/auth-post-signup', [loginController::class, 'postregister']);
@@ -31,10 +31,15 @@ Route::get('/logout', 'AuthController@logout');
 
 // dashboard customer
 Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
+    Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas']);
+
     Route::get('/panel', [panelController::class, 'panel']);
     Route::get('/events', [eventController::class, 'index']);
     Route::get('/events/create', [eventController::class, 'create'])->name('create-event');
     Route::post('/events/store', [eventController::class, 'store'])->name('store-event');
+    Route::get('/events/{id}/edit', [eventController::class, 'edit'])->name('edit-event');
+    Route::patch('/events/{id}/update', [eventController::class, 'update'])->name('update-event');
+    Route::delete('/events/{id}/delete', [eventController::class, 'destroy'])->name('delete-event');
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){
