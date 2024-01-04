@@ -7,6 +7,7 @@ use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Ramsey\Uuid\Uuid;
 
 class loginController extends Controller
 {
@@ -64,6 +65,7 @@ class loginController extends Controller
         }
 
         $store = New users();
+        $store->id = Uuid::uuid4()->toString();
         $store->status_pegawai = 'visitor';
         $store->nip = null;
         $store->name = $request->name;

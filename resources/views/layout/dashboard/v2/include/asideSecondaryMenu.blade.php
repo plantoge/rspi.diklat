@@ -17,7 +17,7 @@
     </a>
 </div>
 
-@can('Manage All User Plus Role Permission')
+{{-- @can('Manage All User Plus Role Permission') --}}
 <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1 {{ Request::is('users*','role*','permission*', 'assignrole*', 'givepermission*', 'struktur-organisasi*') ? 'here show' : '' }}">
     <span class="menu-link">
         <span class="menu-icon">
@@ -77,7 +77,7 @@
         </div>
     </div>
 </div>
-@endcan
+{{-- @endcan --}}
 
 {{-- MODULE BENDAHARA PENERIMAAN ----------------------------------------------------------------------------------------- --}}
 {{-- --------------------------------------------------------------------------------------------------------------------- --}}

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\diklat\web;
 
 use App\Http\Controllers\Controller;
+use App\Model\diklat\event_model;
+use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Uuid;
 
 class websiteController extends Controller
 {
@@ -15,8 +18,10 @@ class websiteController extends Controller
      */
     public function beranda()
     {
+        $event = event_model::where('EVENT_ACTIVE', 'Publish')->latest('created_at')->take(3)->get();
+
         return view('amodule/diklat/web/beranda', [
-            '' => ''
+            'event' => $event
         ]);
     }
 
@@ -44,18 +49,30 @@ class websiteController extends Controller
     public function infokelas($slug, $id)
     {
         // dd($slug, $id);
+        $event = event_model::where('EVENT_SLUG', $slug)->first();
+
         return view('amodule/diklat/web/infokelas', [
             'slug' => $slug,
             'id' => $id,
+            'kelas' => $event,
+
         ]);
     }
 
     public function cokelas($slug, $id)
     {
+        $event = event_model::where('EVENT_SLUG', $slug)->first();
+
         return view('amodule/diklat/web/cokelas', [
             'slug' => $slug,
             'id' => $id,
+            'kelas' => $event,
         ]);
+    }
+
+    public function store_cokelas(Request $request)
+    {   
+        dd($request->all());
     }
 
     /**

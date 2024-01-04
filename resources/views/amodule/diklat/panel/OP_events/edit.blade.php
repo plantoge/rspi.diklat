@@ -54,10 +54,30 @@
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">
+
+                <div class="mb-5 fv-row fv-plugins-icon-container">
+                    <label class="required form-label">Ubah Kegiatan</label>
+                    <input class="form-control mb-2" placeholder="Pick date rage" id="jadwal_kegiatan" name="jadwal_kegiatan"/>
+                    <small class="text-danger"><b>{{$event->EVENT_JADWAL_AWAL}}</b> / <b>{{$event->EVENT_JADWAL_AKHIR}}</b></small>
+                    @error('jadwal_kegiatan')
+                        <small class="text-danger"><b>{{$message}}</b></small>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Harga</label>
                     <input type="text" id="harga" name="harga" value="@matauang($event->EVENT_HARGA)" class="form-control mb-2" onkeyup="formatIDR(this, '#harga');">
                     @error('harga')
+                        <small class="text-danger"><b>{{$message}}</b></small>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="mb-5 fv-row fv-plugins-icon-container">
+                    <label class="required form-label">Diskon</label>
+                    <input type="text" id="diskon" name="diskon" value="@matauang($event->EVENT_DISKON)" class="form-control mb-2" onkeyup="formatIDR(this, '#diskon');">
+                    @error('diskon')
                         <small class="text-danger"><b>{{$message}}</b></small>
                     @enderror
                 </div>
@@ -86,20 +106,10 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6">
-
+            
+            <div class="col-sm-12 col-lg-3">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
-                    <label class="required form-label">Ubah Kegiatan</label>
-                    <input class="form-control mb-2" placeholder="Pick date rage" id="jadwal_kegiatan" name="jadwal_kegiatan"/>
-                    <small class="text-danger"><b>{{$event->EVENT_JADWAL_AWAL}}</b> / <b>{{$event->EVENT_JADWAL_AKHIR}}</b></small>
-                    @error('jadwal_kegiatan')
-                        <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-6">
-                <div class="mb-5 fv-row fv-plugins-icon-container">
-                    <label class="required form-label">Arsip / Publish</label>
+                    {{-- <label class="required form-label">Arsip / Publish</label> --}}
                     <select class="form-select" id="status" name="status" onchange="getStatus()">
                         <option value="Arsip" @if($event->EVENT_ACTIVE == 'Arsip') selected @endif>Arsip</option>
                         <option value="Publish" @if($event->EVENT_ACTIVE == 'Publish') selected @endif>Publish</option>

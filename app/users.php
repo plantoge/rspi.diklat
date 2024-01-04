@@ -9,9 +9,11 @@ class users extends Model
 {
     public $incrementing = false;
     protected $keyType = 'string';
+    protected $primaryKey = 'id';
     
     protected $table = "users";
     protected $fillable = [
+        'id',
         'status_pegawai',
         'nip',
         'name',
@@ -20,13 +22,13 @@ class users extends Model
         'email',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        // Membuat UUID secara otomatis sebelum menyimpan model
-        static::creating(function ($model) {
-            $model->id = Uuid::uuid4()->toString();
-        });
-    }
+    //     // Membuat UUID secara otomatis sebelum menyimpan model
+    //     static::creating(function ($model) {
+    //         $model->id = Uuid::uuid4()->toString();
+    //     });
+    // }
 }

@@ -32,6 +32,7 @@ Route::get('/logout', 'AuthController@logout');
 // dashboard customer
 Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
     Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas']);
+    Route::post('/checkout-kelas-proses', [websiteController::class, 'store_cokelas']);
 
     Route::get('/panel', [panelController::class, 'panel']);
     Route::get('/events', [eventController::class, 'index']);

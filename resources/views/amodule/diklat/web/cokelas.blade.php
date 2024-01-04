@@ -9,7 +9,11 @@
     <div class="container">
         <div class="row d-flex flex-row justify-content-center">
             <div class="col-sm-12 col-lg-5 px-10 my-10 d-flex flex-row align-items-center gap-2 justify-content-end">
+                @if ($kelas->EVENT_GAMBAR)
                 <img class="img-fluid" src="https://placehold.co/400x500/png" alt="" sizes="" srcset="">
+                @else
+                <img class="img-fluid" src="{{asset('storage/app/gambar_event/'.$kelas->EVENT_GAMBAR)}}" alt="" sizes="" srcset="">
+                @endif
             </div>
             <div class="col-sm-12 col-lg-7 px-10 my-10 d-fle flex-ro align-items-cente gap-2 justify-content-start">
 
@@ -22,14 +26,17 @@
                         <!--begin::Item-->
                         <div class="mb-6">
                             <div class="fw-bold text-gray-600 fs-7">Rekening:</div>
-                            <div class="fw-bolder text-gray-800 fs-6">codelabpay@codelab.co</div>
+                            <div class="fw-bolder text-gray-800 fs-6">123456789000</div>
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="mb-6">
                             <div class="fw-bold text-gray-600 fs-7">Account:</div>
-                            <div class="fw-bolder text-gray-800 fs-6">Nl24IBAN34553477847370033
-                            <br />AMB NLANBZTC</div>
+                            <div class="fw-bolder text-gray-800 fs-6">
+                                RSPI Sulianti Saroso
+                                <br/>
+                                Nama
+                            </div>
                         </div>
                         <!--end::Item-->
                         {{-- <div class="mb-15">
@@ -44,17 +51,10 @@
                         <!--begin::Item-->
                         <div class="mb-6">
                             <div class="fw-bold text-gray-600 fs-7">Kelas</div>
-                            <div class="fw-bolder fs-6 text-gray-800">Judul Kelas
+                            <div class="fw-bolder fs-6 text-gray-800">{{$kelas->EVENT_JUDUL}}
                             <a href="{{url('info-kelas/'.$slug.'/'.$id)}}" class="link-primary ps-1">Lihat Kelas</a></div>
                         </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <div class="mb-6">
-                            <div class="fw-bold text-gray-600 fs-7">Completed By:</div>
-                            <div class="fw-bolder text-gray-800 fs-6">Mr. Dewonte Paul</div>
-                        </div>
-                        <!--end::Item-->
-                        <!--begin::Item-->
+                        
                         <div class="m-0">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Upload bukti pembayaran</label>
@@ -65,7 +65,12 @@
                     </div>
                     <!--end::Invoice sidebar-->
                 </div>
-                <a href="{{url('panel')}}" class="btn btn-success w-100">Upload & Lanjut di Panel</a>
+                <form action="{{url('/checkout-kelas-proses')}}" method="post">
+                    @csrf
+                    <input type="text" name="id" value="{{$id}}" hidde>
+                    <input type="text" name="user" value="{{Auth::user()->id}}" hidde>
+                    <button type="submit" class="btn btn-success w-100">Upload & Lanjut di Panel</button>
+                </form>
             </div>
         </div>
     

@@ -48,6 +48,7 @@ class eventController extends Controller
             'deskripsi_singkat' => ['required'],
             'kategori' => ['required'],
             'harga' => ['required'],
+            'diskon' => ['required'],
             'deskripsi' => ['required'],
             'status' => ['required'],
             'jadwal_kegiatan' => ['required'],
@@ -59,6 +60,7 @@ class eventController extends Controller
             'deskripsi_singkat.required' => 'Kolom Deskripsi harus diisi.',
             'kategori.required' => 'Kolom kategori harus diisi.',
             'harga.required' => 'Kolom harga harus diisi.',
+            'diskon.required' => 'Kolom harga harus diisi.',
             'deskripsi.required' => 'Kolom deskripsi harus diisi.',
             'status.required' => 'Kolom status harus diisi.',
             'gambar.required' => 'Kolom ini harus diisi.',
@@ -85,6 +87,8 @@ class eventController extends Controller
         // rapikan
         $harga1 = str_replace(".", "", $request->harga);
         $harga = str_replace(",", ".", $harga1);
+        $diskon1 = str_replace(".", "", $request->diskon);
+        $diskon = str_replace(",", ".", $diskon1);
         $exp = explode(' / ', $request->jadwal_kegiatan);
         $jadwal_awal = $exp[0];
         $jadwal_akhir = $exp[1];
@@ -96,6 +100,7 @@ class eventController extends Controller
         $store->EVENT_DESKRIPSI_PANJANG = $request->deskripsi;
         $store->EVENT_KATEGORI = $request->kategori;
         $store->EVENT_HARGA = $harga;
+        $store->EVENT_DISKON = $diskon;
         $store->EVENT_GAMBAR = $filename;
         $store->EVENT_JADWAL_AWAL = $jadwal_awal;
         $store->EVENT_JADWAL_AKHIR = $jadwal_akhir;
@@ -162,6 +167,8 @@ class eventController extends Controller
 
             $harga1 = str_replace(".", "", $request->harga);
             $harga = str_replace(",", ".", $harga1);
+            $diskon1 = str_replace(".", "", $request->diskon);
+            $diskon = str_replace(",", ".", $diskon1);
             $exp = explode(' / ', $request->jadwal_kegiatan);
             $jadwal_awal = $exp[0];
             $jadwal_akhir = $exp[1];
@@ -172,6 +179,7 @@ class eventController extends Controller
         $update->EVENT_DESKRIPSI_PANJANG = $request->deskripsi;
         $update->EVENT_KATEGORI = $request->kategori;
         $update->EVENT_HARGA = $harga;
+        $update->EVENT_DISKON = $diskon;
         $update->EVENT_JADWAL_AWAL = $jadwal_awal;
         $update->EVENT_JADWAL_AKHIR = $jadwal_akhir;
         $update->EVENT_ACTIVE = $request->status;

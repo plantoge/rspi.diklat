@@ -21,6 +21,7 @@ class CreateEvents extends Migration
             $table->text('EVENT_DESKRIPSI_PANJANG')->nullable();
             $table->string('EVENT_KATEGORI')->nullable();
             $table->biginteger('EVENT_HARGA')->nullable();
+            $table->biginteger('EVENT_DISKON')->nullable();
             $table->text('EVENT_GAMBAR')->nullable();
             $table->date('EVENT_JADWAL_AWAL')->nullable();
             $table->date('EVENT_JADWAL_AKHIR')->nullable();

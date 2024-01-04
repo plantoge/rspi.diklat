@@ -21,6 +21,7 @@ class event_model extends Model
         'EVENT_DESKRIPSI_PANJANG',
         'EVENT_KATEGORI',
         'EVENT_HARGA',
+        'EVENT_DISKON',
         'EVENT_GAMBAR',
         'EVENT_JADWAL_AWAL',
         'EVENT_JADWAL_AKHIR',

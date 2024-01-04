@@ -10,6 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
+    protected $keyType = 'string';
     // protected $connection = 'DB2';
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role', 'name', 'username', 'password', 'email'
+        'id',
+        'status_pegawai',
+        'nip',
+        'name',
+        'username',
+        'password',
+        'email',
     ];
 
     /**

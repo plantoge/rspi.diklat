@@ -33,6 +33,14 @@
 				text-decoration: line-through;
 				text-decoration-thickness: 1.5px;
 			}
+
+			.duabaris {
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		</style>
 	</head>
 	<body id="kt_body" style="background-image: url({{asset('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
@@ -570,6 +578,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 		<script src="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.js')}}"></script>
 		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
+		<script src="{{url('public/Plugin/moment/moment.js')}}"></script>
 		@yield('js')
 	</body>
 </html>
