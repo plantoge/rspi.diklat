@@ -20,6 +20,7 @@ class users extends Model
         'username',
         'password',
         'email',
+        'phone',
     ];
 
     // protected static function boot()

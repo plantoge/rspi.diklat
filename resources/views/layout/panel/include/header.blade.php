@@ -12,8 +12,8 @@
         </div>
         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
             <a href="../dist/index.html">
-                <img alt="Logo" src="{{url('public/Twebsite/v1/media/logos/logo-light.svg')}}" class="h-15px h-lg-20px logo-default" />
-                <img alt="Logo" src="{{url('public/Twebsite/v1/media/logos/logo-default.svg')}}" class="h-15px h-lg-20px logo-sticky" />
+                <img alt="Logo" src="{{url('public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-60px logo-default" />
+                <img alt="Logo" src="{{url('public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-60px logo-sticky" />
             </a>
         </div>
         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">

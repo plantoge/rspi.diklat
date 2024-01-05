@@ -14,11 +14,20 @@
             
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
-                    <a class="menu-link" href="#" data-kt-page="pro">
+                    <a class="menu-link" href="{{url('order')}}" data-kt-page="pro">
                         <span class="menu-icon">
                             <i class="fas fa-coins fa-lg"></i>
                         </span>
                         <span class="menu-title">Transaksi Saya
+                        {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{url('antrian-order')}}" data-kt-page="pro">
+                        <span class="menu-icon">
+                            <i class="fas fa-coins fa-lg"></i>
+                        </span>
+                        <span class="menu-title">Antrian Transaksi
                         {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
                     </a>
                 </div>

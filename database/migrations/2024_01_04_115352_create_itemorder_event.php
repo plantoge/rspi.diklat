@@ -16,6 +16,7 @@ class CreateItemorderEvent extends Migration
         Schema::create('event_itemorder', function (Blueprint $table) {
             $table->char('ITEMORDER_ID', 50)->primary();
             $table->char('ORDER_ID', 50)->nullable();
+            $table->char('EVENT_ID', 50)->nullable();
             $table->text('ITEMORDER_JUDUL_DIPILIH')->nullable();
             $table->biginteger('ITEMORDER_HARGA_DIPILIH')->nullable();
             $table->biginteger('ITEMORDER_DISKON_DIPILIH')->nullable();

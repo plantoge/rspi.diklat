@@ -62,8 +62,8 @@
 							</div>
 							<div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
 								<a href="{{url('/')}}">
-									<img alt="Logo" src="{{asset('public/Twebsite/v1/media/logos/logo-light.svg')}}" class="h-15px h-lg-20px logo-default" />
-									<img alt="Logo" src="{{asset('public/Twebsite/v1/media/logos/logo-default.svg')}}" class="h-15px h-lg-20px logo-sticky" />
+									<img alt="Logo" src="{{asset('public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-60px logo-default" />
+									<img alt="Logo" src="{{asset('public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-60px logo-sticky" />
 								</a>
 							</div>
 							<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
@@ -541,6 +541,7 @@
 							<input type="email" class="form-control form-control-solid mb-8" name="email" placeholder="Email">
 							<input type="password" class="form-control form-control-solid mb-8" name="password" placeholder="Password">
 							<input type="password" class="form-control form-control-solid mb-8" name="password_confirmation" placeholder="Ulangi Password">
+							<input type="text" class="form-control form-control-solid mb-8" name="phone" placeholder="phone Ex: 08123456789" maxlength="16">
 							<button type="submit" class="btn btn-md btn-bg-success w-100 fw-bold text-white">Sign Up</button>
 						</form>
 						{{-- <button class="btn btn-md btn-bg-secondary w-100 fw-bold text-dark">Sign Up</button></button> --}}

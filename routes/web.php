@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\diklat\panel\eventController;
 use App\Http\Controllers\diklat\panel\loginController;
+use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
 use App\Http\Controllers\diklat\web\websiteController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::get('/logout', 'AuthController@logout');
 
 // dashboard customer
 Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], function(){
-    Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas']);
+    Route::get('/checkout-kelas/{slug}/{id}', [websiteController::class, 'cokelas'])->name('checkout-kelas');
     Route::post('/checkout-kelas-proses', [websiteController::class, 'store_cokelas']);
 
     Route::get('/panel', [panelController::class, 'panel']);
@@ -41,6 +42,10 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/events/{id}/edit', [eventController::class, 'edit'])->name('edit-event');
     Route::patch('/events/{id}/update', [eventController::class, 'update'])->name('update-event');
     Route::delete('/events/{id}/delete', [eventController::class, 'destroy'])->name('delete-event');
+    Route::get('/order', [orderController::class, 'index']);
+    Route::get('/antrian-order', [orderController::class, 'antrianorder']);
+    Route::get('/order-proses/{order_id}', [orderController::class, 'konfirmasiorder']);
+    Route::get('/order-invoice/{order_id}', [orderController::class, 'invoice']);
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){
@@ -99,6 +104,4 @@ Route::group(['middleware' => ['auth']], function(){
     Route::patch('update-email', 'SetelanController@updateemail');
     Route::patch('update-password', 'SetelanController@updatepassword');
     // TIDAK BOLEH DI HAPUS ===============================================  Route::get('/dashboard', 'DashboardController@index');
-    
-    
 });

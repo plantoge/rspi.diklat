@@ -46,6 +46,7 @@ class loginController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'string', 'max:20'],
         ];
 
         $pesan = [
@@ -56,6 +57,7 @@ class loginController extends Controller
             'password.required' => 'Kolom password harus diisi.',
             'password.min' => 'Panjang password minimal :min karakter.',
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
+            'phone.required' => 'Kolom Phone harus diisi.',
         ];
 
         $validator = Validator::make($request->all(), $rule, $pesan);
@@ -72,6 +74,7 @@ class loginController extends Controller
         $store->username = $request->email;
         $store->password = bcrypt($request->password);
         $store->email = $request->email;
+        $store->phone = $request->phone;
         $store->save();
 
         // Logic for successful validation

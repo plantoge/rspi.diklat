@@ -124,6 +124,12 @@
                         <div class="fv-row mb-7">
                             <input class="form-control form-control-lg form-control-solid" type="password" placeholder="Ulangi Password" name="password_confirmation" autocomplete="off" />
                         </div>
+                        <div class="fv-row mb-7">
+                            <input class="form-control form-control-lg form-control-solid" type="text" placeholder="Phone Ex: 08123456789" name="phone" autocomplete="off" maxlength="16" />
+                            @error('phone')
+                                <small class="text-danger"><b>{{$message}}</b></small>
+                            @enderror
+                        </div>
 
 
                         <div class="text-center">
