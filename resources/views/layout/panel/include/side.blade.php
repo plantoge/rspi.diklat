@@ -55,6 +55,7 @@
                     </a>
                 </div>
                 @endcan
+                @can("Rekap Data Transaksi Event")
                 <div class="menu-item">
                     <a class="menu-link" href="{{url('report')}}" data-kt-page="pro">
                         <span class="menu-icon">
@@ -63,6 +64,7 @@
                         <span class="menu-title">Rekap Data
                     </a>
                 </div>
+                @endcan
 
 
 
