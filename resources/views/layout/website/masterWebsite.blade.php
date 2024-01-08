@@ -337,13 +337,13 @@
 										@auth
 											<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 												<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-													<img alt="Pic" src="{{url('public/Twebsite/v1/media/avatars/150-26.jpg')}}" />
+													<img alt="Pic" src="{{url('public/Twebsite/v1/media/avatars/blank.png')}}" />
 												</div>
 												<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
 													<div class="menu-item px-3">
 														<div class="menu-content d-flex align-items-center px-3">
 															<div class="symbol symbol-50px me-5">
-																<img alt="Logo" src="{{url('public/Twebsite/v1/media/avatars/150-26.jpg')}}" />
+																<img alt="Logo" src="{{url('public/Twebsite/v1/media/avatars/blank.png')}}" />
 															</div>
 															<div class="d-flex flex-column">
 																<div class="fw-bolder d-flex align-items-center fs-5">{{auth()->user()->name}}
@@ -359,7 +359,15 @@
 													</div> --}}
 													<div class="menu-item px-5">
 														<a href="{{url('/panel')}}" class="menu-link px-5">
-															<span class="menu-text">My Course</span>
+															@if (auth()->user()->roles->contains('name', 'operator'))
+																<span class="menu-text">Panel</span>
+															@elseif (auth()->user()->roles->contains('name', 'visitor'))
+																<span class="menu-text">My Course</span>
+															@elseif (auth()->user()->roles->contains('name', 'superadmin')) 
+																<span class="menu-text">Panel</span>
+															@else
+																<span class="menu-text">My Course</span>
+															@endif
 															{{-- <span class="menu-badge">
 																<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
 															</span> --}}
@@ -441,7 +449,7 @@
 								<span class="text-muted fw-bold me-1">2023 - RSPI Sulianti Saroso</span>
 								{{-- <a href="https://x.com" target="_blank" class="text-gray-800 text-hover-primary">x</a> --}}
 							</div>
-							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+							{{-- <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 								<li class="menu-item">
 									<a href="#" target="_blank" class="menu-link px-2">About</a>
 								</li>
@@ -451,7 +459,7 @@
 								<li class="menu-item">
 									<a href="#" target="_blank" class="menu-link px-2">Purchase</a>
 								</li>
-							</ul>
+							</ul> --}}
 						</div>
 					</div>
 				</div>

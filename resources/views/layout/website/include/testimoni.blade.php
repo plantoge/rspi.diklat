@@ -6,53 +6,53 @@
     </div>
     <div class="tns tns-default mb-10">
         <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000" data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true" data-tns-nav="false" data-tns-items="1" data-tns-center="false" data-tns-dots="false" data-tns-prev-button="#kt_team_slider_prev" data-tns-next-button="#kt_team_slider_next" data-tns-responsive="{1200: {items: 3}, 992: {items: 2}}">
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-2.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Paul Miles</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Development Lead</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, porro eius, commodi perspiciatis animi est veritatis inventore quibusdam vitae molestiae repellendus, iure minima natus cupiditate nemo nulla odio ex architecto!</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-3.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Melisa Marcus</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Creative Director</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-4.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">David Nilson</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Python Expert</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-5.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Anne Clarc</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Project Manager</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-6.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Ricky Hunt</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Art Director</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-7.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Alice Wayde</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">Marketing Manager</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
-            <div class="text-center">
-                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/150-8.jpg')}}')"></div>
+            <div class="text-center p-10">
+                <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center" style="background-image:url('{{asset('public/Twebsite/v1/media/avatars/blank.png')}}')"></div>
                 <div class="mb-0">
                     <a href="../dist/account/overview.html" class="text-dark fw-bolder text-hover-primary fs-3">Carles Puyol</a>
-                    <div class="text-muted fs-6 fw-bold mt-1">QA Managers</div>
+                    <div class="text-muted fs-6 fw-bold mt-1" style="text-align: justify !important;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex mollitia, illo temporibus laborum quisquam ab magni possimus quia cupiditate, consequuntur maxime eum unde eaque repudiandae assumenda modi similique sit?</div>
                 </div>
             </div>
         </div>

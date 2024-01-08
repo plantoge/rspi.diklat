@@ -44,8 +44,10 @@ class websiteController extends Controller
 
     public function kelas()
     {
+        $event = event_model::where('EVENT_ACTIVE', 'Publish')->get();
+
         return view('amodule/diklat/web/kelas', [
-            '' => ''
+            'event' => $event
         ]);
     }
 

@@ -3,41 +3,64 @@
         <div class="hover-scroll-overlay-y my-5 my-lg-6" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_header, #kt_toolbar, #kt_aside_footer, #kt_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu" data-kt-scroll-offset="0px">
             <div class="d-flex flex-center flex-column mb-10">
                 <div class="symbol mb-3 symbol-100px symbol-circle">
-                    <img alt="Pic" src="{{url('public/Twebsite/v1/media/avatars/150-26.jpg')}}" />
+                    <img alt="Pic" src="{{url('public/Twebsite/v1/media/avatars/blank.png')}}" />
                 </div>
                 <a href="#" class="fs-2 text-gray-800 text-hover-primary fw-bolder mb-1">{{auth()->user()->name}}</a>
                 <div class="fs-7 fw-bold text-gray-400 mb-2">{{auth()->user()->email}}</div>
+                <div class="fs-7 fw-bold text-gray-400 mb-0 fw-bold">
+                    <b>
+                        @if (auth()->user()->roles->contains('name', 'operator'))
+                            Operator    
+                        @elseif (auth()->user()->roles->contains('name', 'visitor'))
+                            Visitor 
+                        @elseif (auth()->user()->roles->contains('name', 'superadmin')) 
+                            Administrator
+                        @endif
+                    </b>
+                </div>
                 {{-- <div class="d-flex flex-center">
                     <a href="#" class="btn btn-sm btn-light-primary py-2 px-4 fw-bolder me-2" data-kt-drawer-show="true" data-kt-drawer-target="#kt_drawer_chat">Send Message</a>
                 </div> --}}
             </div>
             
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+                @can("Transaksi Saya")
                 <div class="menu-item">
                     <a class="menu-link" href="{{url('order')}}" data-kt-page="pro">
                         <span class="menu-icon">
-                            <i class="fas fa-coins fa-lg"></i>
+                            <i class="fas fa-folder fa-lg"></i>
                         </span>
                         <span class="menu-title">Transaksi Saya
-                        {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
+                            {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
                     </a>
                 </div>
+                    @endcan
+                @can("Antrian Transaksi")
                 <div class="menu-item">
                     <a class="menu-link" href="{{url('antrian-order')}}" data-kt-page="pro">
                         <span class="menu-icon">
-                            <i class="fas fa-coins fa-lg"></i>
+                            <i class="fas fa-folder fa-lg"></i>
                         </span>
                         <span class="menu-title">Antrian Transaksi
-                        {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
                     </a>
                 </div>
+                @endcan
+                @can("Buat Event")
                 <div class="menu-item">
                     <a class="menu-link" href="{{url('events')}}" data-kt-page="pro">
                         <span class="menu-icon">
-                            <i class="fas fa-coins fa-lg"></i>
+                            <i class="fas fa-folder fa-lg"></i>
                         </span>
                         <span class="menu-title">Buat Events
-                        {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
+                    </a>
+                </div>
+                @endcan
+                <div class="menu-item">
+                    <a class="menu-link" href="{{url('report')}}" data-kt-page="pro">
+                        <span class="menu-icon">
+                            <i class="fas fa-folder fa-lg"></i>
+                        </span>
+                        <span class="menu-title">Rekap Data
                     </a>
                 </div>
 

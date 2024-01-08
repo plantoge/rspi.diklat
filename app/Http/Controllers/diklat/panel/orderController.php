@@ -27,6 +27,7 @@ class orderController extends Controller
     // petugas
     public function antrianorder(){
         $order = DB::table('event_order')
+            ->join('users','users.id','=','event_order.USERS_ID')
             ->join('event_itemorder', 'event_itemorder.ORDER_ID', '=', 'event_order.ORDER_ID')
             ->join('events','events.EVENT_ID','=','event_itemorder.EVENT_ID')
             ->get();
@@ -57,11 +58,14 @@ class orderController extends Controller
     // visitor & petugas
     public function invoice($order_id) {
         $order = DB::table('event_order')
+            ->join('users','users.id','=','event_order.USERS_ID')
             ->join('event_itemorder', 'event_itemorder.ORDER_ID', '=', 'event_order.ORDER_ID')
             ->join('events','events.EVENT_ID','=','event_itemorder.EVENT_ID')
             ->where('event_order.ORDER_ID', $order_id)
-            ->where('event_order.USERS_ID', Auth::user()->id)
+            // ->where('event_order.USERS_ID', Auth::user()->id)
             ->first();
+
+        // dd($order);
 
         if($order == null){
             session()->flash('keyword', 'Alert');

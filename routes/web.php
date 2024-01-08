@@ -4,6 +4,7 @@ use App\Http\Controllers\diklat\panel\eventController;
 use App\Http\Controllers\diklat\panel\loginController;
 use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
+use App\Http\Controllers\diklat\panel\reportEventController;
 use App\Http\Controllers\diklat\web\websiteController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
@@ -46,6 +47,9 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/antrian-order', [orderController::class, 'antrianorder']);
     Route::get('/order-proses/{order_id}', [orderController::class, 'konfirmasiorder']);
     Route::get('/order-invoice/{order_id}', [orderController::class, 'invoice']);
+    
+    Route::get('/report', [reportEventController::class, 'index']);
+    Route::get('/report-filter', [reportEventController::class, 'filter']);
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){

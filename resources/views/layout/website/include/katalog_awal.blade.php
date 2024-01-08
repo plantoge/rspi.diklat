@@ -15,7 +15,7 @@
                         </div>
                     </a>
                     <div class="m-0">
-                        <a href="#" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base duabaris">{{$kelas->EVENT_JUDUL}}</a>
+                        <a href="{{url('info-kelas/'.$kelas->EVENT_SLUG.'/'.$kelas->EVENT_ID)}}" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base duabaris">{{$kelas->EVENT_JUDUL}}</a>
                         {{-- <div class="fs-6 text-gray-600 text-dark mt-0 mb-5 duabaris">{{$kelas->EVENT_DESKRIPSI_SINGKAT}}</div> --}}
 
                         <div class="fw-bold w-100 fs-3 text-gray-600 text-dark mt-3 mb-5">

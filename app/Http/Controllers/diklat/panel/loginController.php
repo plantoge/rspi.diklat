@@ -77,6 +77,11 @@ class loginController extends Controller
         $store->phone = $request->phone;
         $store->save();
 
+        // masukkan ke assign role visitor
+        $role = 'visitor';
+        $user = \App\User::find($store->id);
+        $user->assignRole($role);
+
         // Logic for successful validation
         session()->flash('keyword', 'TambahData');
         session()->flash('pesan', 'Berhasil Daftar akun');

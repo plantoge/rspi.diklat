@@ -46,30 +46,32 @@
                     <div class="fw-bolder fs-3 text-gray-800 mb-8">Invoice #{{$order->ORDER_CODE}}</div>
                     <div class="row g-5 mb-11">
                         <div class="col-sm-6">
-                            <div class="fw-bold fs-7 text-gray-600 mb-1">Issue Date:</div>
-                            <div class="fw-bolder fs-6 text-gray-800">12 Apr 2021</div>
+                            <div class="fw-bold fs-7 text-gray-600 mb-1">Dari:</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{\Carbon\Carbon::parse($order->EVENT_JADWAL_AWAL)->format('d F Y')}}</div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="fw-bold fs-7 text-gray-600 mb-1">Due Date:</div>
+                            <div class="fw-bold fs-7 text-gray-600 mb-1">Sampai Tanggal:</div>
                             <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
-                                <span class="pe-2">02 May 2021</span>
-                                <span class="fs-7 text-danger d-flex align-items-center">
-                                <span class="bullet bullet-dot bg-danger me-2"></span>Due in 7 days</span>
+                                <span class="pe-2">{{\Carbon\Carbon::parse($order->EVENT_JADWAL_AKHIR)->format('d F Y')}}</span>
+                                {{-- <span class="fs-7 text-danger d-flex align-items-center">
+                                <span class="bullet bullet-dot bg-danger me-2"></span>Due in 7 days</span> --}}
                             </div>
                         </div>
                     </div>
                     <div class="row g-5 mb-12">
                         <div class="col-sm-6">
-                            <div class="fw-bold fs-7 text-gray-600 mb-1">Issue For:</div>
-                            <div class="fw-bolder fs-6 text-gray-800">KeenThemes Inc.</div>
-                            <div class="fw-bold fs-7 text-gray-600">8692 Wild Rose Drive
-                            <br />Livonia, MI 48150</div>
+                            <div class="fw-bold fs-7 text-gray-600 mb-1">Dari:</div>
+                            <div class="fw-bolder fs-6 text-gray-800">RSPI Sulianti Saroso</div>
+                            <div class="fw-bold fs-7 text-gray-600">Jl. Sunter Permai Raya No.2
+                            <br />Papanggo, Kec. Tj. Priok, Jkt Utara</div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="fw-bold fs-7 text-gray-600 mb-1">Issued By:</div>
-                            <div class="fw-bolder fs-6 text-gray-800">CodeLab Inc.</div>
-                            <div class="fw-bold fs-7 text-gray-600">9858 South 53rd Ave.
-                            <br />Matthews, NC 28104</div>
+                            <div class="fw-bold fs-7 text-gray-600 mb-1">Untuk:</div>
+                            <div class="fw-bolder fs-6 text-gray-800"><b>{{$order->name}}</b></div>
+                            <div class="fw-bold fs-7 text-gray-600">
+                                {{$order->email}} <br>
+                                status: <span class="badge badge-success">{{$order->ORDER_STATUS}}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="flex-grow-1">
@@ -77,46 +79,34 @@
                             <table class="table mb-3">
                                 <thead>
                                     <tr class="border-bottom fs-6 fw-bolder text-gray-400">
-                                        <th class="min-w-175px pb-2">Description</th>
-                                        <th class="min-w-70px text-end pb-2">Hours</th>
-                                        <th class="min-w-80px text-end pb-2">Rate</th>
-                                        <th class="min-w-100px text-end pb-2">Amount</th>
+                                        <th class="min-w-175px pb-2">Event</th>
+                                        <th class="min-w-70px text-end pb-2">Harga</th>
+                                        <th class="min-w-80px text-end pb-2">Qty</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="fw-bolder text-gray-700 fs-5 text-end">
-                                        <td class="d-flex align-items-center pt-6">
-                                        <i class="fa fa-genderless text-danger fs-2 me-2"></i>Creative Design</td>
-                                        <td class="pt-6">80</td>
-                                        <td class="pt-6">$40.00</td>
-                                        <td class="pt-6 text-dark fw-boldest">$3200.00</td>
+
+                                    <tr class="fw-bolder text-gray-700 fs-5">
+                                        <td class="d-fle align-items-cente pt-6">
+                                            {{$order->EVENT_JUDUL}} 
+                                            <span class="badge badge-info">{{$order->EVENT_KATEGORI}}</span>
+                                        </td>
+                                        <td class="pt-6 text-end">@matauang($order->ITEMORDER_HARGA_DIPILIH)</td>
+                                        <td class="pt-6 text-end">1</td>
                                     </tr>
-                                    <tr class="fw-bolder text-gray-700 fs-5 text-end">
-                                        <td class="d-flex align-items-center">
-                                        <i class="fa fa-genderless text-success fs-2 me-2"></i>Logo Design</td>
-                                        <td>120</td>
-                                        <td>$40.00</td>
-                                        <td class="fs-5 text-dark fw-boldest">$4800.00</td>
-                                    </tr>
-                                    <tr class="fw-bolder text-gray-700 fs-5 text-end">
-                                        <td class="d-flex align-items-center">
-                                        <i class="fa fa-genderless text-primary fs-2 me-2"></i>Web Development</td>
-                                        <td>210</td>
-                                        <td>$60.00</td>
-                                        <td class="fs-5 text-dark fw-boldest">$12600.00</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="mw-300px">
-                                <div class="d-flex flex-stack mb-3">
+                                {{-- <div class="d-flex flex-stack mb-3">
                                     <div class="fw-bold pe-10 text-gray-600 fs-7">Subtotal:</div>
                                     <div class="text-end fw-bolder fs-6 text-gray-800">$ 20,600.00</div>
-                                </div>
+                                </div> --}}
                                 <div class="d-flex flex-stack">
                                     <div class="fw-bold pe-10 text-gray-600 fs-7">Total</div>
-                                    <div class="text-end fw-bolder fs-6 text-gray-800">$ 20,600.00</div>
+                                    <div class="text-end fw-bolder fs-6 text-gray-800">@matauang($order->ITEMORDER_HARGA_DIPILIH)</div>
                                 </div>
                             </div>
                         </div>

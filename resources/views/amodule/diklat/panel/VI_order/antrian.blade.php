@@ -54,6 +54,9 @@
                             <a class="link text-dark fw-bold" target="_blank" href="{{url('info-kelas/'.$data->EVENT_SLUG.'/'.$data->EVENT_ID)}}">
                                 {{$data->ITEMORDER_JUDUL_DIPILIH}}
                             </a>
+                            <br>
+                            <span class="badge badge-info">{{$data->name}}</span> 
+                            <span class="badge badge-secondary">{{$data->phone}}</span> 
                         </td>    
                         <td>@matauang($data->ORDER_TOTAL)</td>    
                         <td>
@@ -104,8 +107,29 @@
 <script src="{{url('public/Twebsite/v1/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script>
     $("#kt_datatable_zero_configuration").DataTable({
-        // dom: 'Bfrtip',
-        
+        dom: 'Bfrtip',
+        buttons: [
+          {
+            extend: 'copy',
+            text: 'Salin'
+          },
+          {
+            extend: 'csv',
+            text: 'CSV'
+          },
+          {
+            extend: 'excel',
+            text: 'Excel'
+          },
+        //   {
+        //     extend: 'pdf',
+        //     text: 'PDF'
+        //   },
+        //   {
+        //     extend: 'print',
+        //     text: 'Cetak'
+        //   }
+        ],
         searching: true,
         paging: true
     });
