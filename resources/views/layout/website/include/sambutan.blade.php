@@ -26,11 +26,6 @@
 
     </div>
     <div class="fs-5 fw-bold text-gray-600">
-        <p class="mb-8">First, a disclaimer – the entire process of writing a blog post often takes more than a couple of hours, even if you can type eighty words per minute and your writing skills are sharp. From the seed of the idea to finally hitting “Publish,” you might spend several days or maybe even a week “writing” a blog post, but it’s important to spend those vital hours planning your post and even thinking about
-        <a href="../dist/pages/blog/post.html" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
-        <p class="mb-8">There’s an old maxim that states,
-        <span class="text-gray-800 pe-1">“No fun for the writer, no fun for the reader.”</span>No matter what industry you’re working in, as a blogger, you should live and die by this statement.</p>
-        <p class="mb-8">Before you do any of the following steps, be sure to pick a topic that actually interests you. Nothing – and
-        <a href="../dist/pages/blog/home.html" class="link-primary pe-1">I mean NOTHING</a>– will kill a blog post more effectively than a lack of enthusiasm from the writer. You can tell when a writer is bored by their subject, and it’s so cringe-worthy it’s a little embarrassing.</p>
+        {!! $informasi->SAMBUTAN_BERANDA !!}
     </div>
 </div>

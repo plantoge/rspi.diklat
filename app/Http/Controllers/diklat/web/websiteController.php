@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Model\diklat\event_model;
 use App\Model\diklat\itemorder_model;
 use App\Model\diklat\order_model;
+use App\Model\diklat\testimony_model;
 use App\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
 
@@ -22,9 +24,13 @@ class websiteController extends Controller
     public function beranda()
     {
         $event = event_model::where('EVENT_ACTIVE', 'Publish')->latest('created_at')->take(3)->get();
+        $testimony = testimony_model::all();
+        $informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
 
         return view('amodule/diklat/web/beranda', [
-            'event' => $event
+            'event' => $event,
+            'testimony' => $testimony,
+            'informasi' => $informasi,
         ]);
     }
 

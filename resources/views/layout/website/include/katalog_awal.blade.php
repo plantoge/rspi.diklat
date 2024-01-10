@@ -1,4 +1,4 @@
-<div class="mb-18 pt-20">
+<div class="mb-18 pt-10">
     <div class="text-center mb-12">
         <h3 class="fs-2hx text-dark mb-5">Kelas</h3>
         <div class="fs-5 text-muted fw-bold">Our goal is to provide a complete and robust theme solution

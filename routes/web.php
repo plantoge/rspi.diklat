@@ -5,6 +5,7 @@ use App\Http\Controllers\diklat\panel\loginController;
 use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
 use App\Http\Controllers\diklat\panel\reportEventController;
+use App\Http\Controllers\diklat\panel\testimonyController;
 use App\Http\Controllers\diklat\web\websiteController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
@@ -37,6 +38,15 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::post('/checkout-kelas-proses', [websiteController::class, 'store_cokelas']);
 
     Route::get('/panel', [panelController::class, 'panel']);
+    Route::post('/panel-informasi/store', [panelController::class, 'store_informasi']);
+    
+    Route::get('/testimony', [testimonyController::class, 'index']);
+    Route::get('/testimony/create', [testimonyController::class, 'create'])->name('create-testimony');
+    Route::post('/testimony/store', [testimonyController::class, 'store'])->name('store-testimony');
+    Route::get('/testimony/{id}/edit', [testimonyController::class, 'edit'])->name('edit-testimony');
+    Route::patch('/testimony/{id}/update', [testimonyController::class, 'update'])->name('update-testimony');
+    Route::delete('/testimony/{id}/delete', [testimonyController::class, 'destroy']);
+
     Route::get('/events', [eventController::class, 'index']);
     Route::get('/events/create', [eventController::class, 'create'])->name('create-event');
     Route::post('/events/store', [eventController::class, 'store'])->name('store-event');

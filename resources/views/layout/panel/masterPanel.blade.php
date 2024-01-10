@@ -39,18 +39,20 @@
 						</div> --}}
 					</div>
 					<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+						@include('layout.panel.include.examplekonten')
 						
 						@include('layout.panel.include.side')
 
 						<div class="content flex-row-fluid" id="kt_content">
-							<div class="card card-page">
+							<div class="card card-page mb-5">
 								<div class="card-body">
-									@include('layout.panel.include.examplekonten')
 
                                     @yield('konten')
 
 								</div>
 							</div>
+							@yield('konten2')
+							
 						</div>
 					</div>
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">

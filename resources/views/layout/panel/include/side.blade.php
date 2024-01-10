@@ -34,16 +34,6 @@
                             {{-- <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span> --}}
                     </a>
                 </div>
-                    @endcan
-                @can("Antrian Transaksi")
-                <div class="menu-item">
-                    <a class="menu-link" href="{{url('antrian-order')}}" data-kt-page="pro">
-                        <span class="menu-icon">
-                            <i class="fas fa-folder fa-lg"></i>
-                        </span>
-                        <span class="menu-title">Antrian Transaksi
-                    </a>
-                </div>
                 @endcan
                 @can("Buat Event")
                 <div class="menu-item">
@@ -55,6 +45,17 @@
                     </a>
                 </div>
                 @endcan
+                @can("Antrian Transaksi")
+                <div class="menu-item">
+                    <a class="menu-link" href="{{url('antrian-order')}}" data-kt-page="pro">
+                        <span class="menu-icon">
+                            <i class="fas fa-folder fa-lg"></i>
+                        </span>
+                        <span class="menu-title">Antrian Transaksi
+                    </a>
+                </div>
+                @endcan
+                
                 @can("Rekap Data Transaksi Event")
                 <div class="menu-item">
                     <a class="menu-link" href="{{url('report')}}" data-kt-page="pro">
@@ -66,13 +67,7 @@
                 </div>
                 @endcan
 
-
-
-
-
-
-
-                {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -82,19 +77,25 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title">Account</span>
+                        <span class="menu-title">Master</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="../dist/account/overview.html">
+                            <a class="menu-link" href="{{url('/')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Overview</span>
+                                <span class="menu-title">Beranda Sambutan</span>
+                            </a>
+                            <a class="menu-link" href="{{url('/testimony')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Testimony</span>
                             </a>
                         </div>
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <a class="menu-link" href="#" data-kt-page="pro">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -102,35 +103,10 @@
                                 <span class="menu-title">Settings
                                 <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span>
                             </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#" data-kt-page="pro">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Security
-                                <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="#" data-kt-page="pro">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Audit Logs
-                                <span class="badge badge-pro badge-light-danger fw-bold fs-9 px-2 py-1 ms-1">Pro</span></span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../dist/account/activity.html">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Activity</span>
-                            </a>
-                        </div>
+                        </div> --}}
+                        
                     </div>
-                </div> --}}
+                </div>
                 
                 {{-- <div class="menu-item">
                     <a class="menu-link" href="#" data-kt-page="pro">

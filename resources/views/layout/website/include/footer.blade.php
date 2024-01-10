@@ -6,7 +6,25 @@
                     
                 </div>
             </div> --}}
-            <div class="col-sm-12 col-lg-4">
+
+            @php
+                $informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
+            @endphp
+            <div class="col-sm-12 col-lg-3">
+                <div class="d-flex justify-content-center">
+                    <div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
+                        <div class="menu-item">
+                            <img src="{{url('/public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-70px logo-sticky">
+                            <p class="text-muted" style="text-align: justify !important;">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni, labore, quae sequi in minima suscipit incidunt deleniti.
+                            </p>
+                            <h5 class="text-muted" style="text-align: justify !important;">Jl. Sunter Permai Raya No.2, Papanggo, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14340</h5>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-3">
                 <div class="d-flex justify-content-center">
                     <div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
                         <div class="menu-item">
@@ -23,38 +41,38 @@
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Telepon</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">021-12345678</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TELEPON}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Fax</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">021-12345678</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FAX}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Call Center</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">021-12345678</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->CALLCENTER}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Hotline</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">021-12345678</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->HOTLINE}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Email</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">support@rspiss.go.id</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->EMAIL}}</span>
                             </a>
                         </div>
                        
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 col-lg-3">
                 <div class="d-flex justify-content-center">
                     <div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
                         <div class="menu-item">
@@ -71,25 +89,31 @@
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Facebook</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">facebook.com/rspi</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FACEBOOK}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Instagram</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">@rspiss</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->INSTAGRAM}}</span>
                             </a>
                         </div>
                         <div class="menu-item">
                             <a href="#" class="menu-link border-3 border-start border-transparent">
                                 <span class="menu-title">Twitter</span>
-                                <span class="menu-badge fs-7 fw-normal text-muted">@rspiss_twit</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TWITTER}}</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a href="https://wa.me/0812345678" target="_blank" class="menu-link border-3 border-start border-transparent">
+                                <span class="menu-title">WhatsApp</span>
+                                <span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->WHATSAPP}}</span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 col-lg-3">
                 <div class="d-flex justify-content-center">
                     <div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
                         <div class="menu-item">

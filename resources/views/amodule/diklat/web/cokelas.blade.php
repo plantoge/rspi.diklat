@@ -53,8 +53,16 @@
                             <!--begin::Item-->
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Kelas</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{$kelas->EVENT_JUDUL}}
-                                <a href="{{url('info-kelas/'.$slug.'/'.$id)}}" class="link-primary ps-1">Lihat Kelas</a></div>
+                                <div class="fw-bolder fs-6 text-gray-800">
+                                    {{$kelas->EVENT_JUDUL}}
+                                    <a href="{{url('info-kelas/'.$slug.'/'.$id)}}" class="link-primary ps-1">Lihat Kelas</a>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Harga</div>
+                                <div class="fw-bolder fs-6 text-gray-800">
+                                    @matauang($kelas->EVENT_HARGA - $kelas->EVENT_DISKON)
+                                </div>
                             </div>
                             
                             <div class="m-0">
