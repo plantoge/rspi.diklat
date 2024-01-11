@@ -82,7 +82,7 @@ class testimonyController extends Controller
         // Logic for successful validation
         session()->flash('keyword', 'TambahData');
         session()->flash('pesan', 'Testimony Ditambahkan');
-        return redirect('/testimony');
+        return redirect('/panel-testimony');
     }
 
     /**
@@ -142,7 +142,7 @@ class testimonyController extends Controller
         // Logic for successful validation
         session()->flash('keyword', 'TambahData');
         session()->flash('pesan', 'Testimony Diubah');
-        return redirect('/testimony');
+        return redirect('/panel-testimony');
     }
 
     /**
@@ -159,6 +159,6 @@ class testimonyController extends Controller
 
         session()->flash('keyword', 'Alert');
         session()->flash('pesan', 'Testimony dihapus');
-        return redirect('/testimony');
+        return redirect('/panel-testimony');
     }
 }

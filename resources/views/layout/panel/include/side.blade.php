@@ -82,13 +82,19 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{url('/')}}">
+                            <a class="menu-link" href="{{url('/panel-gambar')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Beranda Sambutan</span>
+                                <span class="menu-title">Gambar</span>
                             </a>
-                            <a class="menu-link" href="{{url('/testimony')}}">
+                            <a class="menu-link" href="{{url('/panel-about')}}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Tentang Kami</span>
+                            </a>
+                            <a class="menu-link" href="{{url('/panel-testimony')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

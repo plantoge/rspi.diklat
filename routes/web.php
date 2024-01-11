@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\diklat\panel\eventController;
+use App\Http\Controllers\diklat\panel\gambarController;
 use App\Http\Controllers\diklat\panel\loginController;
 use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
@@ -40,12 +41,19 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/panel', [panelController::class, 'panel']);
     Route::post('/panel-informasi/store', [panelController::class, 'store_informasi']);
     
-    Route::get('/testimony', [testimonyController::class, 'index']);
-    Route::get('/testimony/create', [testimonyController::class, 'create'])->name('create-testimony');
-    Route::post('/testimony/store', [testimonyController::class, 'store'])->name('store-testimony');
-    Route::get('/testimony/{id}/edit', [testimonyController::class, 'edit'])->name('edit-testimony');
-    Route::patch('/testimony/{id}/update', [testimonyController::class, 'update'])->name('update-testimony');
-    Route::delete('/testimony/{id}/delete', [testimonyController::class, 'destroy']);
+    Route::get('/panel-testimony', [testimonyController::class, 'index']);
+    Route::get('/panel-testimony/create', [testimonyController::class, 'create'])->name('create-testimony');
+    Route::post('/panel-testimony/store', [testimonyController::class, 'store'])->name('store-testimony');
+    Route::get('/panel-testimony/{id}/edit', [testimonyController::class, 'edit'])->name('edit-testimony');
+    Route::patch('/panel-testimony/{id}/update', [testimonyController::class, 'update'])->name('update-testimony');
+    Route::delete('/panel-testimony/{id}/delete', [testimonyController::class, 'destroy']);
+
+    Route::get('/panel-gambar', [gambarController::class, 'index']);
+    Route::get('/panel-gambar/create', [gambarController::class, 'create'])->name('create-gambar');
+    Route::post('/panel-gambar/store', [gambarController::class, 'store'])->name('store-gambar');
+    Route::get('/panel-gambar/{id}/edit', [gambarController::class, 'edit'])->name('edit-gambar');
+    Route::patch('/panel-gambar/{id}/update', [gambarController::class, 'update'])->name('update-gambar');
+    Route::delete('/panel-gambar/{id}/delete', [gambarController::class, 'destroy']);
 
     Route::get('/events', [eventController::class, 'index']);
     Route::get('/events/create', [eventController::class, 'create'])->name('create-event');

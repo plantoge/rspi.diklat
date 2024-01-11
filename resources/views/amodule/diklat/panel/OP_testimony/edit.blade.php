@@ -9,7 +9,7 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/testimony/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/panel-testimony/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <h2 class="pb-5">Buat Events</h2>

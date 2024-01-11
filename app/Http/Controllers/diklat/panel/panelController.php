@@ -21,6 +21,7 @@ class panelController extends Controller
     {
         $store = infokontak_model::find('001');
         $store->SAMBUTAN_BERANDA = $request->sambutan_beranda;
+        $store->DESKRIPSI_AGENDA = $request->deskripsi_agenda;
         $store->TELEPON = $request->telepon;
         $store->FAX = $request->fax;
         $store->CALLCENTER = $request->callcenter;

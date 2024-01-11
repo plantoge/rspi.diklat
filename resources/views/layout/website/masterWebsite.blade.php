@@ -413,15 +413,43 @@
 							</div>
 						</div> --}}
 					</div>
+					
+					@include('layout.website.include.notif')
 
 					<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
 						<div class="content flex-row-fluid" id="kt_content">
 							<div class="card">
 								<div class="card-body p-lg-17">
-									{{-- @php
-									dd(Request::segment(1));
-									@endphp --}}
-									@include('layout.website.include.notif')
+									
+									@yield('konten')
+
+									@if(Request::segment(1) == null)
+
+										@include('layout.website.include.sambutan')
+
+										@include('layout.website.include.nilaiplus')
+										
+										{{-- @include('layout.website.include.berita') --}}
+
+										@include('layout.website.include.katalog_awal')
+										
+										@include('layout.website.include.testimoni')
+										
+									
+									@endif
+
+									@include('layout.website.include.footer')
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{{-- <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+						<div class="content flex-row-fluid" id="kt_content">
+							<div class="card">
+								<div class="card-body p-lg-17">
+									
 
 									@yield('konten')
 
@@ -429,7 +457,7 @@
 
 										@include('layout.website.include.sambutan')
 										
-										{{-- @include('layout.website.include.berita') --}}
+										@include('layout.website.include.berita')
 										
 										@include('layout.website.include.testimoni')
 										
@@ -442,7 +470,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --}}
+					
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<div class="text-dark order-2 order-md-1">

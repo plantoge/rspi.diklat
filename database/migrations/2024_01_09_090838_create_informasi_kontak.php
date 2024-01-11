@@ -16,6 +16,7 @@ class CreateInformasiKontak extends Migration
         Schema::create('informasi_kontak', function (Blueprint $table) {
             $table->char('INFO_ID', 50)->primary();
             $table->text('SAMBUTAN_BERANDA')->nullable();
+            $table->text('DESKRIPSI_AGENDA')->nullable();
             $table->string('TELEPON')->nullable();
             $table->string('FAX')->nullable();
             $table->string('CALLCENTER')->nullable();

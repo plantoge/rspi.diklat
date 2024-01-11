@@ -4,6 +4,8 @@ namespace App\Http\Controllers\diklat\web;
 
 use App\Http\Controllers\Controller;
 use App\Model\diklat\event_model;
+use App\Model\diklat\gambar_model;
+use App\Model\diklat\infokontak_model;
 use App\Model\diklat\itemorder_model;
 use App\Model\diklat\order_model;
 use App\Model\diklat\testimony_model;
@@ -23,14 +25,17 @@ class websiteController extends Controller
      */
     public function beranda()
     {
-        $event = event_model::where('EVENT_ACTIVE', 'Publish')->latest('created_at')->take(3)->get();
         $testimony = testimony_model::all();
-        $informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
+        $event     = event_model::where('EVENT_ACTIVE', 'Publish')->latest('created_at')->take(3)->get();
+        $informasi = infokontak_model::where('INFO_ID', '001')->first();
+        $gambar    = gambar_model::where('GAMBAR_KATEGORI', 'Beranda')->get();
 
+        // dd(count($gambar), $gambar);
         return view('amodule/diklat/web/beranda', [
             'event' => $event,
             'testimony' => $testimony,
             'informasi' => $informasi,
+            'gambar' => $gambar,
         ]);
     }
 
@@ -43,8 +48,12 @@ class websiteController extends Controller
 
     public function agenda()
     {
+        $agenda    = gambar_model::where('GAMBAR_KATEGORI', 'Agenda')->get();
+        $informasi = infokontak_model::where('INFO_ID', '001')->first();
+
         return view('amodule/diklat/web/agenda', [
-            '' => ''
+            'agenda' => $agenda,
+            'informasi' => $informasi
         ]);
     }
 

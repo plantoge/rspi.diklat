@@ -8,18 +8,21 @@
 
         <div class="tns" style="direction: ltr">
             <div data-tns="true"  data-tns-nav-position="bottom" data-tns-mouse-drag="true" data-tns-controls="false">
-                <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
-                    <img src="https://placehold.co/2000x800/png" class="card-rounded shadow mw-100" alt="" />
-                    {{-- <img src="{{asset('public/Twebsite/v1/media/stock/2000x800/1.jpg')}}" class="card-rounded shadow mw-100" alt="" /> --}}
-                </div>
-                <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
-                    <img src="https://placehold.co/2000x800/png" class="card-rounded shadow mw-100" alt="" />
-                    {{-- <img src="{{asset('public/Twebsite/v1/media/stock/2000x800/1.jpg')}}" class="card-rounded shadow mw-100" alt="" /> --}}
-                </div>
-                <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
-                    <img src="https://placehold.co/2000x800/png" class="card-rounded shadow mw-100" alt="" />
-                    {{-- <img src="{{asset('public/Twebsite/v1/media/stock/2000x800/1.jpg')}}" class="card-rounded shadow mw-100" alt="" /> --}}
-                </div>
+                @if (count($gambar) >= 1)
+                    @foreach ($gambar as $gmbr)
+                        <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
+                            <img src="{{url('/storage/app/gambar_website/'.$gmbr->GAMBAR)}}" class="card-rounded shadow mw-100" alt="" />
+                        </div>
+                    @endforeach
+                @else
+                    <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
+                        <img src="https://placehold.co/2000x800/png" class="card-rounded shadow mw-100" alt="" />
+                    </div>
+                    <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
+                        <img src="https://placehold.co/2000x800/png" class="card-rounded shadow mw-100" alt="" />
+                    </div>
+                @endif
+                
                 ...
             </div>
         </div>

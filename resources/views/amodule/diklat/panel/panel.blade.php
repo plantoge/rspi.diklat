@@ -72,6 +72,17 @@
                     </div>
                 </div>
             </div>
+            <h2 class="pb-5 pt-5">Deskripsi Agenda</h2>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        {{-- <label class="form-label">Deskripsi</label> --}}
+                        <textarea id="deskripsi_agenda" name="deskripsi_agenda" class="tox-target">
+                            {!! $informasi->DESKRIPSI_AGENDA !!}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 
                 <div class="col-sm-12 col-lg-12">
@@ -88,15 +99,24 @@
 
 @section('js')
 <script src="{{url('public/Twebsite/v1/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
+
 <script>
     tinymce.init({
-        selector: "#sambutan_beranda", 
-        // height : "100",
+        selector: "#sambutan_beranda",
         branding: false,
-        toolbar: ["styleselect fontselect fontsizeselect",
-        "undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify",
-        "bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code"],
-    plugins : "advlist autolink link image lists charmap print preview code"
+        toolbar: [
+            "styleselect fontselect fontsizeselect | undo redo | cut copy paste | table | bold italic | link | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview | code |"  // Menambahkan opsi tabel ke dalam toolbar
+        ],
+        plugins: "advlist autolink link lists charmap print preview code table" 
+    });
+
+    tinymce.init({
+        selector: "#deskripsi_agenda",
+        branding: false,
+        toolbar: [
+            "styleselect fontselect fontsizeselect | undo redo | cut copy paste | table | bold italic | link | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview | code |"  // Menambahkan opsi tabel ke dalam toolbar
+        ],
+        plugins: "advlist autolink link lists charmap print preview code table" 
     });
 
 </script>
