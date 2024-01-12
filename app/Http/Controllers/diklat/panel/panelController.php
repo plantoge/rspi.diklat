@@ -22,6 +22,12 @@ class panelController extends Controller
         $store = infokontak_model::find('001');
         $store->SAMBUTAN_BERANDA = $request->sambutan_beranda;
         $store->DESKRIPSI_AGENDA = $request->deskripsi_agenda;
+        $store->DESKRIPSI_TENTANGKAMI = $request->deskripsi_tentangkami;
+        $store->DESKRIPSI_SINGKAT_POINTPLUS = $request->deskripsi_singkat_poinplus;
+        $store->DESKRIPSI_SINGKAT_EVENT_BERANDA = $request->deskripsi_singkat_event_beranda;
+        $store->DESKRIPSI_SINGKAT_EVENT = $request->deskripsi_singkat_event;
+        $store->DESKRIPSI_SINGKAT_TESTIMONY = $request->deskripsi_singkat_testimony;
+        $store->DESKRIPSI_SINGKAT_AGENDA = $request->deskripsi_singkat_agenda;
         $store->TELEPON = $request->telepon;
         $store->FAX = $request->fax;
         $store->CALLCENTER = $request->callcenter;

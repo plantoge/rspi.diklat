@@ -88,11 +88,11 @@
                                 </span>
                                 <span class="menu-title">Gambar</span>
                             </a>
-                            <a class="menu-link" href="{{url('/panel-about')}}">
+                            <a class="menu-link" href="{{url('/panel-keunggulan')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Tentang Kami</span>
+                                <span class="menu-title">Keunggulan</span>
                             </a>
                             <a class="menu-link" href="{{url('/panel-testimony')}}">
                                 <span class="menu-bullet">
@@ -133,7 +133,7 @@
         </div>
     </div>
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
-        <a href="{{url('/')}}" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="">
+        <a href="{{url('/')}}" target="_blank" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="">
             <span class="btn-label">Website</span>
             
         </a>

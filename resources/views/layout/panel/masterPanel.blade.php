@@ -19,6 +19,7 @@
 		<link href="{{url('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{url('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
+		<link href="{{asset('/public/Tdashboard/v2/plugins/custom/fontawesome6/css/all.css')}}" rel="stylesheet">
 		@yield('css')
 	</head>
 	<body id="kt_body" style="background-image: url({{url('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled">

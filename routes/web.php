@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\diklat\panel\eventController;
 use App\Http\Controllers\diklat\panel\gambarController;
+use App\Http\Controllers\diklat\panel\keunggulanController;
 use App\Http\Controllers\diklat\panel\loginController;
 use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
@@ -54,6 +55,13 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/panel-gambar/{id}/edit', [gambarController::class, 'edit'])->name('edit-gambar');
     Route::patch('/panel-gambar/{id}/update', [gambarController::class, 'update'])->name('update-gambar');
     Route::delete('/panel-gambar/{id}/delete', [gambarController::class, 'destroy']);
+
+    Route::get('/panel-keunggulan', [keunggulanController::class, 'index']);
+    Route::get('/panel-keunggulan/create', [keunggulanController::class, 'create'])->name('create-keunggulan');
+    Route::post('/panel-keunggulan/store', [keunggulanController::class, 'store'])->name('store-keunggulan');
+    Route::get('/panel-keunggulan/{id}/edit', [keunggulanController::class, 'edit'])->name('edit-keunggulan');
+    Route::patch('/panel-keunggulan/{id}/update', [keunggulanController::class, 'update'])->name('update-keunggulan');
+    Route::delete('/panel-keunggulan/{id}/delete', [keunggulanController::class, 'destroy']);
 
     Route::get('/events', [eventController::class, 'index']);
     Route::get('/events/create', [eventController::class, 'create'])->name('create-event');

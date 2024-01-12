@@ -20,6 +20,7 @@
 		<link href="{{asset('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
+		<link href="{{asset('/public/Tdashboard/v2/plugins/custom/fontawesome6/css/all.css')}}" rel="stylesheet">
 		@yield('css')
 		<style>
 			@keyframes blink {
@@ -426,15 +427,10 @@
 									@if(Request::segment(1) == null)
 
 										@include('layout.website.include.sambutan')
-
-										@include('layout.website.include.nilaiplus')
-										
 										{{-- @include('layout.website.include.berita') --}}
-
 										@include('layout.website.include.katalog_awal')
-										
+										@include('layout.website.include.nilaiplus')
 										@include('layout.website.include.testimoni')
-										
 									
 									@endif
 
@@ -617,6 +613,7 @@
 		<script src="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.js')}}"></script>
 		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
 		<script src="{{url('public/Plugin/moment/moment.js')}}"></script>
+		<script src="{{url('public/Twebsite/v1/plugins/custom/fslightbox/fslightbox.bundle.js')}}"></script>
 		@yield('js')
 	</body>
 </html>

@@ -58,9 +58,36 @@
                         <label class="required form-label">WhatsApp</label>
                         <input type="text" id="whatsapp" name="whatsapp" value="{{$informasi->WHATSAPP}}" class="form-control mb-2" placeholder="ex: 0812345678">
                     </div>
+                    
+                </div>
+
+                <div class="col sm-12 col-lg-6">
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Singkat Poin Plus</label>
+                        <textarea name="deskripsi_singkat_poinplus" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_POINTPLUS}}">{{$informasi->DESKRIPSI_SINGKAT_POINTPLUS}}</textarea>
+                    </div>
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Singkat Event Beranda</label>
+                        <textarea name="deskripsi_singkat_event_beranda" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_EVENT_BERANDA}}">{{$informasi->DESKRIPSI_SINGKAT_EVENT_BERANDA}}</textarea>
+                    </div>
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Singkat Event</label>
+                        <textarea name="deskripsi_singkat_event" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_EVENT}}">{{$informasi->DESKRIPSI_SINGKAT_EVENT}}</textarea>
+                    </div>
+                </div>
+                <div class="col sm-12 col-lg-6">
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Singkat Testimony</label>
+                        <textarea name="deskripsi_singkat_testimony" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_TESTIMONY}}">{{$informasi->DESKRIPSI_SINGKAT_TESTIMONY}}</textarea>
+                    </div>
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Singkat Agenda</label>
+                        <textarea name="deskripsi_singkat_agenda" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}">{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}</textarea>
+                    </div>
                 </div>
 
             </div>
+            
             <h2 class="pb-5 pt-5">Kata Sambutan Beranda</h2>
             <div class="row">
                 <div class="col-sm-12 col-lg-12">
@@ -79,6 +106,17 @@
                         {{-- <label class="form-label">Deskripsi</label> --}}
                         <textarea id="deskripsi_agenda" name="deskripsi_agenda" class="tox-target">
                             {!! $informasi->DESKRIPSI_AGENDA !!}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <h2 class="pb-5 pt-5">Deskripsi Tentang Kami</h2>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        {{-- <label class="form-label">Deskripsi</label> --}}
+                        <textarea id="deskripsi_tentangkami" name="deskripsi_tentangkami" class="tox-target">
+                            {!! $informasi->DESKRIPSI_TENTANGKAMI !!}
                         </textarea>
                     </div>
                 </div>
@@ -112,6 +150,15 @@
 
     tinymce.init({
         selector: "#deskripsi_agenda",
+        branding: false,
+        toolbar: [
+            "styleselect fontselect fontsizeselect | undo redo | cut copy paste | table | bold italic | link | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview | code |"  // Menambahkan opsi tabel ke dalam toolbar
+        ],
+        plugins: "advlist autolink link lists charmap print preview code table" 
+    });
+
+    tinymce.init({
+        selector: "#deskripsi_tentangkami",
         branding: false,
         toolbar: [
             "styleselect fontselect fontsizeselect | undo redo | cut copy paste | table | bold italic | link | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview | code |"  // Menambahkan opsi tabel ke dalam toolbar

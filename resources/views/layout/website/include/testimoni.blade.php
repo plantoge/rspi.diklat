@@ -1,8 +1,7 @@
 <div class="mb-10 pt-5">
     <div class="text-center mb-12">
         <h3 class="fs-2hx text-dark mb-5">Testimoni</h3>
-        <div class="fs-5 text-muted fw-bold">It’s no doubt that when a development takes longer to complete, additional costs to
-        <br />integrate and test each extra feature creeps up and haunts most of us.</div>
+        <div class="fs-5 text-muted fw-bold">{{$informasi->DESKRIPSI_SINGKAT_TESTIMONY}}</div>
     </div>
     <div class="tns tns-default mb-10">
         <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000" data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true" data-tns-nav="false" data-tns-items="1" data-tns-center="false" data-tns-dots="false" data-tns-prev-button="#kt_team_slider_prev" data-tns-next-button="#kt_team_slider_next" data-tns-responsive="{1200: {items: 3}, 992: {items: 2}}">

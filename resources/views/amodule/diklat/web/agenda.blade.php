@@ -7,8 +7,7 @@
         <div class="text-center mb-15">
             <h3 class="fs-2hx text-dark mb-5">Agenda</h3>
             <div class="fs-5 text-muted fw-bold">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, laboriosam maxime ut odit 
-                iure nemo est magnam sed quibusdam quasi doloremque expedita aspernatur ea suscipit voluptatum vero eum esse! Repudiandae!
+                {{$informasi->DESKRIPSI_SINGKAT_AGENDA}}
             </div>
         </div>
 
@@ -16,9 +15,15 @@
             <div data-tns="true"  data-tns-nav-position="bottom" data-tns-mouse-drag="true" data-tns-controls="false">
                 @if (count($agenda) >= 1)
                     @foreach ($agenda as $agenda)
-                        <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
-                            <img src="{{url('/storage/app/gambar_website/'.$agenda->GAMBAR)}}" class="card-rounded shadow mw-100" alt="" />
-                        </div>
+                        <a class="d-block overlay" data-fslightbox="lightbox-basic" href="{{url('/storage/app/gambar_website/'.$agenda->GAMBAR)}}">
+                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px"
+                                style="background-image:url('{{url('/storage/app/gambar_website/'.$agenda->GAMBAR)}}')">
+                            </div>
+                        
+                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25 shadow">
+                                <i class="bi bi-eye-fill text-white fs-3x"></i>
+                            </div>
+                        </a>
                     @endforeach
                 @else
                     <div class="text-center px-5 pt-5 pt-lg-6 px-lg-6">
