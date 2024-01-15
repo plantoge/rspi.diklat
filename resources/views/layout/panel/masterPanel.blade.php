@@ -20,6 +20,7 @@
 		<link href="{{url('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
 		<link href="{{asset('/public/Tdashboard/v2/plugins/custom/fontawesome6/css/all.css')}}" rel="stylesheet">
+		
 		@yield('css')
 	</head>
 	<body id="kt_body" style="background-image: url({{url('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled">
@@ -99,7 +100,7 @@
 							<a href="#" class="link-primary fw-bolder">FAQ Page</a>.</div>
 						</div>
 						<div class="btn btn-light-primary fw-bolder w-100 mb-8">
-						<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Invite Gmail Contacts</div>
+						<img alt="Logo" src="#" class="h-20px me-3" />Invite Gmail Contacts</div>
 						<div class="separator d-flex flex-center mb-8">
 							<span class="text-uppercase bg-body fs-7 fw-bold text-muted px-3">or</span>
 						</div>
@@ -110,7 +111,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-1.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma Smith</a>
@@ -146,7 +147,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-26.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max Smith</a>
@@ -164,7 +165,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-4.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Sean Bean</a>
@@ -182,7 +183,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-15.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Brian Cox</a>
@@ -218,7 +219,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-8.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Francis Mitcham</a>
@@ -272,7 +273,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-6.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Dan Wilson</a>
@@ -308,7 +309,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-7.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana Crown</a>
@@ -344,7 +345,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-17.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">John Miller</a>
@@ -380,7 +381,7 @@
 								<div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
 									<div class="d-flex align-items-center">
 										<div class="symbol symbol-35px symbol-circle">
-											<img alt="Pic" src="assets/media/avatars/150-10.jpg" />
+											<img alt="Pic" src="#" />
 										</div>
 										<div class="ms-5">
 											<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ethan Wilder</a>
@@ -439,6 +440,7 @@
 			</span>
 		</div>
 		<script>var hostUrl = "assets/";</script>
+		<script src="{{url('public/Tdashboard/v2/js/jquery-3.6.3.min.js')}}"></script>
 		<script src="{{url('public/Twebsite/v1/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{url('public/Twebsite/v1/js/scripts.bundle.js')}}"></script>
 		<script src="{{url('public/Twebsite/v1/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
@@ -447,6 +449,7 @@
 		<script src="{{url('public/Tdashboard/v2/plugins/custom/toastr/toastrku.js')}}"></script>
 		<script src="{{url('public/Plugin/moment/moment.js')}}"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		
 		@yield('js')
 	</body>
 </html>

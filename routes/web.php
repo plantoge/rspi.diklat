@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\diklat\panel\beritaController;
+use App\Http\Controllers\diklat\panel\beritaKategoriController;
 use App\Http\Controllers\diklat\panel\eventController;
 use App\Http\Controllers\diklat\panel\gambarController;
 use App\Http\Controllers\diklat\panel\keunggulanController;
@@ -48,6 +50,20 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/panel-testimony/{id}/edit', [testimonyController::class, 'edit'])->name('edit-testimony');
     Route::patch('/panel-testimony/{id}/update', [testimonyController::class, 'update'])->name('update-testimony');
     Route::delete('/panel-testimony/{id}/delete', [testimonyController::class, 'destroy']);
+
+    Route::get('/panel-berita-kategori', [beritaKategoriController::class, 'index']);
+    Route::get('/panel-berita-kategori/create', [beritaKategoriController::class, 'create'])->name('create-berita-kategori');
+    Route::post('/panel-berita-kategori/store', [beritaKategoriController::class, 'store'])->name('store-berita-kategori');
+    Route::get('/panel-berita-kategori/{id}/edit', [beritaKategoriController::class, 'edit'])->name('edit-berita-kategori');
+    Route::patch('/panel-berita-kategori/{id}/update', [beritaKategoriController::class, 'update'])->name('update-berita-kategori');
+    Route::delete('/panel-berita-kategori/{id}/delete', [beritaKategoriController::class, 'destroy']);
+
+    Route::get('/panel-berita', [beritaController::class, 'index']);
+    Route::get('/panel-berita/create', [beritaController::class, 'create'])->name('create-berita');
+    Route::post('/panel-berita/store', [beritaController::class, 'store'])->name('store-berita');
+    Route::get('/panel-berita/{id}/edit', [beritaController::class, 'edit'])->name('edit-berita');
+    Route::patch('/panel-berita/{id}/update', [beritaController::class, 'update'])->name('update-berita');
+    Route::delete('/panel-berita/{id}/delete', [beritaController::class, 'destroy']);
 
     Route::get('/panel-gambar', [gambarController::class, 'index']);
     Route::get('/panel-gambar/create', [gambarController::class, 'create'])->name('create-gambar');
