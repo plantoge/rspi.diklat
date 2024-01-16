@@ -52,6 +52,7 @@ class beritaController extends Controller
             'status' => ['required'],
             'kategori' => ['required'],
             'konten' => ['required'],
+            'gambar' => ['required', 'max:3072', 'mimes:jpeg,jpg,png'],
         ];
 
         $pesan = [
@@ -60,6 +61,9 @@ class beritaController extends Controller
             'status.required' => 'Kolom status harus diisi.',
             'kategori.required' => 'Kolom kategori harus diisi.',
             'konten.required' => 'Kolom konten harus diisi.',
+            'gambar.required' => 'Kolom gambar harus diisi.',
+            'gambar.max' => 'Kolom ini maksimal :max .',
+            'gambar.mimes' => 'Kolom ini harus berupa file dengan ekstensi jpeg, jpg, png.',
         ];
 
         $validator = Validator::make($request->all(), $rule, $pesan);
@@ -68,12 +72,21 @@ class beritaController extends Controller
             return redirect()->route('create-berita')->withErrors($validator)->withInput($request->all());
         }
 
+        // lolos validasi
+        $filename = null;
+        if ($request->file('gambar')) {
+            $file         = $request->file('gambar'); 
+            $path         = $file->store('gambar_berita', 'local'); // proses upload file
+            $filename = basename($path);
+        }
+
         $store = new berita_model();
         $store->BERITA_TITLE = $request->title;
         $store->BERITA_SLUG = $request->slug;
         $store->BERITA_STATUS = $request->status;
         $store->BERITA_KATEGORI_ID = $request->kategori;
         $store->BERITA_KONTEN = $request->konten;
+        $store->BERITA_GAMBAR = $filename;
         $store->Save();
 
         // Logic for successful validation
@@ -102,9 +115,11 @@ class beritaController extends Controller
     public function edit($id)
     {
         $berita = berita_model::find($id);
+        $kategori = beritakategori_model::all();
 
         return view('amodule/diklat/panel/OP_berita/edit', [
             'berita' => $berita,
+            'kategori' => $kategori,
             'id' => $id,
         ]);
     }

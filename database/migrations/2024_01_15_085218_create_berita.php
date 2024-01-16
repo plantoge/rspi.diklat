@@ -20,6 +20,7 @@ class CreateBerita extends Migration
             $table->string('BERITA_TITLE')->nullable();
             $table->string('BERITA_SLUG')->unique()->nullable();
             $table->longText('BERITA_KONTEN')->nullable();
+            $table->text('BERITA_GAMBAR')->nullable();
             $table->string('BERITA_STATUS')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

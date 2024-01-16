@@ -20,6 +20,7 @@ class berita_model extends Model
         'BERITA_TITLE',
         'BERITA_SLUG',
         'BERITA_KONTEN',
+        'BERITA_GAMBAR',
         'BERITA_STATUS',
     ];
 
