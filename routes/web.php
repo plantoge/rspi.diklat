@@ -10,6 +10,7 @@ use App\Http\Controllers\diklat\panel\orderController;
 use App\Http\Controllers\diklat\panel\panelController;
 use App\Http\Controllers\diklat\panel\reportEventController;
 use App\Http\Controllers\diklat\panel\testimonyController;
+use App\Http\Controllers\diklat\web\blogController;
 use App\Http\Controllers\diklat\web\websiteController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
@@ -21,6 +22,8 @@ Route::get('/kelas', [websiteController::class, 'kelas']);
 Route::get('/info-kelas/{slug}/{id}', [websiteController::class, 'infokelas']);
 Route::get('/about-us', [websiteController::class, 'aboutus']);
 Route::get('/agenda', [websiteController::class, 'agenda']);
+Route::get('/blog', [blogController::class, 'index']);
+Route::get('/blog/{slug}', [blogController::class, 'show']);
 
 Route::get('/auth-sign-in', [loginController::class, 'indexlogin'])->name('login');
 Route::post('/auth-check-signin', [loginController::class, 'checksignin']);
@@ -62,6 +65,7 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::get('/panel-berita/create', [beritaController::class, 'create'])->name('create-berita');
     Route::post('/panel-berita/store', [beritaController::class, 'store'])->name('store-berita');
     Route::get('/panel-berita/{id}/edit', [beritaController::class, 'edit'])->name('edit-berita');
+    Route::get('/panel-berita/{id}/view', [beritaController::class, 'show'])->name('view-berita');
     Route::patch('/panel-berita/{id}/update', [beritaController::class, 'update'])->name('update-berita');
     Route::delete('/panel-berita/{id}/delete', [beritaController::class, 'destroy']);
 

@@ -53,6 +53,8 @@
                         <td>{{$data->BERITA_SLUG}}</td>    
                         <td>{{$data->BERITA_STATUS}}</td>    
                         <td>
+                            <a href="{{url('panel-berita/' .$data->BERITA_ID. '/view')}}" class="btn btn-warning btn-sm w-100">View</a>
+                            <br>
                             <a href="{{url('panel-berita/' .$data->BERITA_ID. '/edit')}}" class="btn btn-primary btn-sm w-100">Edit</a>
                             <br>
                             <form action="{{url('panel-berita/' .$data->BERITA_ID. '/delete')}}" method="post">

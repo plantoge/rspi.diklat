@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Model\diklat\berita_model;
 use App\Model\diklat\beritakategori_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class beritaController extends Controller
@@ -82,6 +85,7 @@ class beritaController extends Controller
 
         $store = new berita_model();
         $store->BERITA_TITLE = $request->title;
+        $store->USERS_ID = Auth::user()->id;
         $store->BERITA_SLUG = $request->slug;
         $store->BERITA_STATUS = $request->status;
         $store->BERITA_KATEGORI_ID = $request->kategori;
@@ -103,7 +107,15 @@ class beritaController extends Controller
      */
     public function show($id)
     {
-        //
+        // $berita = berita_model::find($id);
+        $berita = DB::table('berita')
+            ->join('users', 'users.id', '=', 'berita.USERS_ID')
+            ->where('berita.BERITA_ID', '=', $id)
+            ->first();
+
+        return view('amodule/diklat/panel/OP_berita/berita', [
+            'berita' => $berita
+        ]);
     }
 
     /**
@@ -133,7 +145,32 @@ class beritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = berita_model::where('BERITA_ID', $id)->first();
+
+            $filename = $update->BERITA_GAMBAR;
+
+            if ($request->file('gambar')) {
+                $check    = Storage::disk('local')->delete('/gambar_berita/' . $filename);
+                $file     = $request->file('gambar'); 
+                $path     = $file->store('gambar_berita', 'local'); // proses upload file
+                $filename = basename($path);
+                
+                // masukkan ke query
+                $update->BERITA_GAMBAR = $filename;
+            }
+
+        $update->BERITA_TITLE = $request->title;
+        $update->BERITA_SLUG = $request->slug;
+        $update->BERITA_STATUS = $request->status;
+        $update->BERITA_KATEGORI_ID = $request->kategori;
+        $update->BERITA_KONTEN = $request->konten;
+        $update->USERS_ID = Auth::user()->id;
+        $update->Save();
+
+        // Logic for successful validation
+        session()->flash('keyword', 'TambahData');
+        session()->flash('pesan', 'Berita Diubah');
+        return redirect('/panel-berita');
     }
 
     /**
@@ -145,6 +182,7 @@ class beritaController extends Controller
     public function destroy($id)
     {
         $del = berita_model::find($id);
+        $check = Storage::disk('local')->delete('/gambar_berita/' . $del->BERITA_GAMBAR);
         $del->delete();
 
         session()->flash('keyword', 'Alert');

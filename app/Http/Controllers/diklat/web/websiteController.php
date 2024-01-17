@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\diklat\web;
 
 use App\Http\Controllers\Controller;
+use App\Model\diklat\berita_model;
 use App\Model\diklat\event_model;
 use App\Model\diklat\gambar_model;
 use App\Model\diklat\infokontak_model;
@@ -31,6 +32,15 @@ class websiteController extends Controller
         $informasi = infokontak_model::where('INFO_ID', '001')->first();
         $gambar    = gambar_model::where('GAMBAR_KATEGORI', 'Beranda')->get();
         $pointplus = keunggulan_model::all();
+        $blog = DB::table('berita')
+            ->select('berita.*', 'users.*')
+            ->selectRaw('berita.created_at AS BERITA_CREATED_AT')
+            ->join('users','users.id', '=', 'berita.USERS_ID')
+            ->where('berita.BERITA_STATUS', 'Publik')
+            ->orderBy('berita.created_at', 'desc')
+            ->take(6)
+            ->get();
+        // $blog      = berita_model::where('BERITA_STATUS', 'Publik')->latest('created_at')->take(6)->get();
 
         // dd(count($gambar), $gambar);
         return view('amodule/diklat/web/beranda', [
@@ -39,6 +49,7 @@ class websiteController extends Controller
             'informasi' => $informasi,
             'gambar' => $gambar,
             'pointplus' => $pointplus,
+            'blog' => $blog,
         ]);
     }
 

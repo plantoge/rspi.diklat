@@ -9,7 +9,7 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-berita-kategori/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/panel-berita/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <h2 class="pb-5">Ubah Berita</h2>
@@ -17,8 +17,8 @@
             <div class="col-sm-12 col-lg-12">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Title</label>
-                    <input type="text" id="title" name="title" class="form-control mb-2" placeholder="" value="{{old('title')}}" onchange="generateSlug()">
-                    <input type="text" id="slug" name="slug" value="{{old('slug')}}" hidden>
+                    <input type="text" id="title" name="title" class="form-control mb-2" placeholder="" value="{{$berita->BERITA_TITLE}}" onchange="generateSlug()">
+                    <input type="text" id="slug" name="slug" value="{{$berita->BERITA_SLUG}}" hidden>
                     <small class="text-muted" id="textSlug"></small>
                 </div>
             </div>
@@ -26,8 +26,8 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Status</label>
                     <select class="form-select" id="status" name="status">
-                        <option value="Arsip">Arsip</option>
-                        <option value="Publik">Publik</option>
+                        <option value="Arsip" @if($berita->BERITA_STATUS == 'Arsip') selected @endif>Arsip</option>
+                        <option value="Publik" @if($berita->BERITA_STATUS == 'Publik') selected @endif>Publik</option>
                     </select>  
                 </div>
             </div>
@@ -35,22 +35,23 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Kategori</label>
                     <select class="form-select" id="kategori" name="kategori">
-                        @foreach ($kategori as $kategori)
-                            <option value="{{$kategori->BERITA_KATEGORI_ID}}" @if(old('kategori') == $kategori->BERITA_KATEGORI_ID) selected @endif>{{$kategori->BERITA_KATEGORI}}</option>
+                        @foreach ($kategori as $kat)
+                            <option value="{{$kat->BERITA_KATEGORI_ID}}" @if($berita->BERITA_KATEGORI_ID == $kat->BERITA_KATEGORI_ID) selected @endif>{{$kat->BERITA_KATEGORI}}</option>
                         @endforeach
                     </select>  
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
-                    <label class="form-label">Upload Gambar Utama</label>
+                    <label class="form-label">Ganti Gambar Utama</label>
                     <input type="file" id="gambar" name="gambar" class="form-control mb-2">
+                    <a href="{{url('storage/app/gambar_berita/' . $berita->BERITA_GAMBAR)}}" target="_blank" class="btn  btn-link btn-sm">{{$berita->BERITA_GAMBAR}}</a>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="require form-label">Konten</label>
-                    <textarea id="konten" name="konten" class="tox-target">{{old('konten')}}</textarea>
+                    <textarea id="konten" name="konten" class="tox-target" value="{{$berita->BERITA_KONTEN}}">{!! $berita->BERITA_KONTEN !!}</textarea>
                 </div>
             </div>
 
@@ -67,14 +68,19 @@
 <script src="{{url('public/Twebsite/v1/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script src="{{url('public/Twebsite/v1/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
 <script src="{{asset('public/plugin/js/formatrupiah.js')}}"></script>
-
 <script>
     tinymce.init({
-        selector: "#deskripsi", 
-        // height : "100",
-        branding: false
+        selector: "#konten",
+        branding: false,
+        plugins: 'advlist autolink lists link fullscreen table charmap print preview anchor lineheight',
+        toolbar: 'fullscreen undo redo | formatselect | ' +
+            'bold italic backcolor | alignleft aligncenter alignright alignjustify | lineheight ' +
+            'bullist numlist outdent indent | removeformat | link | ' +
+            'table | hr | subscript superscript | ' +
+            'fontselect fontsizeselect | code | preview | forecolor backcolor | ',
     });
-
+</script>
+<script>
     function formatIDR(element, field) {
         var el      = $(element);
         var parent  = el.parent().parent().parent();

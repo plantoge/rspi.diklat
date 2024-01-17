@@ -84,6 +84,10 @@
                         <label class="required form-label">Deskripsi Singkat Agenda</label>
                         <textarea name="deskripsi_singkat_agenda" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}">{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}</textarea>
                     </div>
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Berita / Blog</label>
+                        <textarea name="deskripsi_singkat_berita" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_BERITA}}">{{$informasi->DESKRIPSI_SINGKAT_BERITA}}</textarea>
+                    </div>
                 </div>
 
             </div>

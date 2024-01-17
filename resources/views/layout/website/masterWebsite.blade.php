@@ -42,6 +42,14 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
+
+			.empatbaris {
+				display: -webkit-box;
+				-webkit-line-clamp: 4;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		</style>
 	</head>
 	<body id="kt_body" style="background-image: url({{asset('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
@@ -98,6 +106,11 @@
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
 													<span class="menu-title">Tentang Kami</span>
+												</span>
+											</div>
+											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
+												<span class="menu-link py-3" onclick="window.location.href='{{url('/blog')}}'">
+													<span class="menu-title">Blog</span>
 												</span>
 											</div>
 											
@@ -427,7 +440,7 @@
 									@if(Request::segment(1) == null)
 
 										@include('layout.website.include.sambutan')
-										{{-- @include('layout.website.include.berita') --}}
+										@include('layout.website.include.berita')
 										@include('layout.website.include.katalog_awal')
 										@include('layout.website.include.nilaiplus')
 										@include('layout.website.include.testimoni')

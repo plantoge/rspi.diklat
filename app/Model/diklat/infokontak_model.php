@@ -23,6 +23,7 @@ class infokontak_model extends Model
         'DESKRIPSI_SINGKAT_EVENT',
         'DESKRIPSI_SINGKAT_TESTIMONY',
         'DESKRIPSI_SINGKAT_AGENDA',
+        'DESKRIPSI_SINGKAT_BERITA',
         'TELEPON',
         'FAX',
         'CALLCENTER',

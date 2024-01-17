@@ -23,6 +23,7 @@ class CreateInformasiKontak extends Migration
             $table->text('DESKRIPSI_SINGKAT_EVENT')->nullable();
             $table->text('DESKRIPSI_SINGKAT_TESTIMONY')->nullable();
             $table->text('DESKRIPSI_SINGKAT_AGENDA')->nullable();
+            $table->text('DESKRIPSI_SINGKAT_BERITA')->nullable();
             $table->string('TELEPON')->nullable();
             $table->string('FAX')->nullable();
             $table->string('CALLCENTER')->nullable();
