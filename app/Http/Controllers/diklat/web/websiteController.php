@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class websiteController extends Controller
 {
@@ -159,6 +160,7 @@ class websiteController extends Controller
         $order->ORDER_BUKTI = $filename;
         $order->ORDER_STATUS = 'Menunggu Konfirmasi';
         $order->save();
+
         // 5. buat item order
         $itemorder = New itemorder_model();
         $itemorder->ORDER_ID = $order->ORDER_ID;
@@ -167,6 +169,18 @@ class websiteController extends Controller
         $itemorder->ITEMORDER_HARGA_DIPILIH = $event->EVENT_HARGA;
         $itemorder->ITEMORDER_DISKON_DIPILIH = $event->EVENT_DISKON;
         $itemorder->save();
+
+        
+        // 6. Kirim pesan ke Telegram
+        // $chatId = '705776065';
+        // $message = "
+        //     <b>Orderan Masuk #".$order->ORDER_CODE."</b>
+        // ";
+
+        // Telegram::sendMessage([
+        //     'chat_id' => $chatId,
+        //     'text' => $message,
+        // ]);
 
         session()->flash('keyword', 'TambahData');
         session()->flash('pesan', 'Berhasil Checkout Event. Silahkan untuk menunggu verifikasi pembayaran dari Operator');

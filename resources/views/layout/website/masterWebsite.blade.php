@@ -440,9 +440,9 @@
 									@if(Request::segment(1) == null)
 
 										@include('layout.website.include.sambutan')
+										@include('layout.website.include.nilaiplus')
 										@include('layout.website.include.berita')
 										@include('layout.website.include.katalog_awal')
-										@include('layout.website.include.nilaiplus')
 										@include('layout.website.include.testimoni')
 									
 									@endif

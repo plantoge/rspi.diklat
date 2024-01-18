@@ -18,7 +18,7 @@
                     </div>
                 </a>
                 <div class="m-0">
-                    <a href="{{url('/b/'.$blogg->BERITA_SLUG)}}" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base duabaris">{{$blogg->BERITA_TITLE}}</a>
+                    <a href="{{url('/blog/'.$blogg->BERITA_SLUG)}}" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base duabaris">{{$blogg->BERITA_TITLE}}</a>
                     <div class="fw-bold fs-5 text-gray-600 text-dark mt-3 mb-5 empatbaris">
                         {!! $blogg->BERITA_KONTEN !!}
                     </div>
