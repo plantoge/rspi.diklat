@@ -400,7 +400,7 @@
                                 <a href="#" class="menu-link px-5">My Profile</a>
                             </div> --}}
                             <div class="menu-item px-5">
-                                <a href="#" class="menu-link px-5">
+                                <a href="{{url('/panel')}}" class="menu-link px-5">
                                     @if (auth()->user()->roles->contains('name', 'operator'))
                                         <span class="menu-text">Panel</span>
                                     @elseif (auth()->user()->roles->contains('name', 'visitor'))

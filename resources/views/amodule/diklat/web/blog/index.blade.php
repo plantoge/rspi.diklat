@@ -9,7 +9,8 @@
             <div class="card-header border-0 pt-5">
                 <h3 class="card-title align-items-start flex-column">
                     <span class="card-label fw-bolder fs-1 text-dark">Blog</span>
-                    <span class="text-muted mt-1 fw-bold fs-7">Latest tech trends</span>
+                    {{-- <span class="text-muted mt-1 fw-bold fs-7">Latest tech trends</span> --}}
+                    {{-- <span class="text-muted mt-3 fw-bold fs-7"><p>Page {{ $berita->currentPage() }} of {{ $berita->lastPage() }}</p></span> --}}
                 </h3>
                 
             </div>
@@ -26,9 +27,9 @@
                         <div class="col-sm-12 col-lg-9">
                             <div class="d-flex align-items-center flex-row-fluid flex-wrap p-4">
                                 <div class="flex-grow-1 me-2 empatbaris">
-                                    <span class="text-gray-800 text-hover-primary fs-1 fw-bolder">
+                                    <a href="{{url('/blog/'.$data->BERITA_SLUG)}}" class="text-gray-800 text-hover-primary fs-1 fw-bolder">
                                         {{$data->BERITA_TITLE}}
-                                    </span>
+                                    </a>
                                     <span class="text-muted fw-bold d-block fs-7 " style="text-align: justify;">
                                         {!! $data->BERITA_KONTEN !!}
                                     </span>
@@ -39,6 +40,13 @@
                         </div>
                     </div>                    
                 @endforeach
+
+                <div class="float-en text-end mb-5">
+                    Page {{ $berita->currentPage() }} of {{ $berita->lastPage() }}
+                </div>
+                <div>
+                    {{ $berita->appends(['search' => request('search')])->links() }}
+                </div>
             </div>
         </div>
     </div>

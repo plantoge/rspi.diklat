@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" >
     <head>
-        <title>Ceres HTML Pro- Bootstrap 5 HTML Multipurpose Admin Dashboard Theme - Ceres HTML Pro by KeenThemes</title>
+        <title>Register</title>
         <meta charset="utf-8"/>
-        <meta name="description" content="Ceres admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
-        <meta name="keywords" content="Ceres theme, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>      
+        {{-- <meta name="description" content="Ceres admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
+        <meta name="keywords" content="Ceres theme, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Ceres HTML Pro- Bootstrap 5 HTML Multipurpose Admin Dashboard Theme - Ceres HTML Pro by KeenThemes" />
         <meta property="og:url" content="https://keenthemes.com/products/ceres-html-pro"/>
         <meta property="og:site_name" content="Ceres HTML Pro by Keenthemes" />
         <link rel="canonical" href="https://preview.keenthemes.com/ceres-html-pro"/>
-        <link rel="shortcut icon" href="/ceres-html-pro/assets/media/logos/favicon.ico"/>
+        <link rel="shortcut icon" href="/ceres-html-pro/assets/media/logos/favicon.ico"/> --}}
         <link href="{{url('public/Twebsite/v1/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{url('public/Twebsite/v1/css/style.bundle.css')}}" rel="stylesheet" type="text/css"/>
         <link href="{{asset('public/Tdashboard/v2/plugins/custom/toastr/toastr.min.css')}}" rel="stylesheet">
@@ -143,15 +143,15 @@
                 </div>
             </div>
 
-            <div class="d-flex flex-center flex-column-auto p-10">
+            {{-- <div class="d-flex flex-center flex-column-auto p-10">
                 <div class="d-flex align-items-center fw-semibold fs-6">
-                    <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
+                    <a href="#" class="text-muted text-hover-primary px-2">About</a>
     
-                    <a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
+                    <a href="#" class="text-muted text-hover-primary px-2">Contact</a>
                     
-                    <a href="https://keenthemes.com/products/ceres-html-pro" class="text-muted text-hover-primary px-2">Contact Us</a>
+                    <a href="#" class="text-muted text-hover-primary px-2">Contact Us</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

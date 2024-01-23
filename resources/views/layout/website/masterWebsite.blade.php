@@ -51,6 +51,48 @@
 				text-overflow: ellipsis;
 			}
 		</style>
+		<style>
+			#whatsapp-call-center {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				z-index: 999;
+			}
+
+			#whatsapp-button {
+				display: flex;
+				align-items: center;
+				/* background-color: #25d366; */
+				color: #fff;
+				padding: 15%;
+				margin-right: 15px;
+				border-radius: 100%;
+				text-decoration: none;
+			}
+
+			#whatsapp-button img {
+				width: 30px;
+				height: 30px;
+				margin-right: 10px;
+			}
+
+			@media screen and (max-width: 767px) {
+				#whatsapp-call-center {
+					bottom: 10px;
+					right: 10px;
+				}
+
+				#whatsapp-button {
+					padding: 8px;
+				}
+
+				#whatsapp-button img {
+					width: 25px;
+					height: 25px;
+					margin-right: 8px;
+				}
+			}
+		</style>
 	</head>
 	<body id="kt_body" style="background-image: url({{asset('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
 		<div class="d-flex flex-column flex-root">
@@ -447,47 +489,20 @@
 									
 									@endif
 
-									@include('layout.website.include.footer')
+									{{-- @include('layout.website.include.footer') --}}
 
 								</div>
 							</div>
 						</div>
 					</div>
 					
-					{{-- <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
-						<div class="content flex-row-fluid" id="kt_content">
-							<div class="card">
-								<div class="card-body p-lg-17">
-									
-
-									@yield('konten')
-
-									@if(Request::segment(1) == null)
-
-										@include('layout.website.include.sambutan')
-										
-										@include('layout.website.include.berita')
-										
-										@include('layout.website.include.testimoni')
-										
-										@include('layout.website.include.katalog_awal')
-									
-									@endif
-
-									@include('layout.website.include.footer')
-
-								</div>
-							</div>
-						</div>
-					</div> --}}
-					
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-						<div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
+					<div class="footer py-4 d-flex flex-lg-column bg-dark mt-15" id="kt_footer">
+						{{-- <div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-muted fw-bold me-1">2023 - RSPI Sulianti Saroso</span>
-								{{-- <a href="https://x.com" target="_blank" class="text-gray-800 text-hover-primary">x</a> --}}
+								<a href="https://x.com" target="_blank" class="text-gray-800 text-hover-primary">x</a>
 							</div>
-							{{-- <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
 								<li class="menu-item">
 									<a href="#" target="_blank" class="menu-link px-2">About</a>
 								</li>
@@ -497,9 +512,166 @@
 								<li class="menu-item">
 									<a href="#" target="_blank" class="menu-link px-2">Purchase</a>
 								</li>
-							</ul> --}}
+							</ul>
+						</div> --}}
+						<div class="container p-5">
+
+							<div class="row">
+								@php
+									$informasi = DB::table('informasi_kontak')->where('INFO_ID', '001')->first();
+								@endphp
+								<div class="col-sm-12 col-lg-3">
+									<div class="d-flex justify-content-center">
+										<div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
+											<div class="menu-item">
+												<img src="{{url('/public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-70px logo-sticky">
+												<p class="text-muted" style="text-align: justify !important;">
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni, labore, quae sequi in minima suscipit incidunt deleniti.
+												</p>
+												<h5 class="text-muted" style="text-align: justify !important;">Jl. Sunter Permai Raya No.2, Papanggo, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14340</h5>
+											</div>
+										   
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 col-lg-3">
+									<div class="d-flex justify-content-center">
+										<div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
+											<div class="menu-item">
+												<div class="menu-content pb-2">
+													<span class="menu-section text-muted text-uppercase fs-4 fw-bold">Kontak</span>
+												</div>
+											</div>
+											{{-- <div class="menu-item">
+												<a href="#" class="menu-link active border-3 border-start border-primary">
+													<span class="menu-title">All Questions</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">675</span>
+												</a>
+											</div> --}}
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Telepon</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TELEPON}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Fax</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FAX}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Call Center</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->CALLCENTER}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Hotline</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->HOTLINE}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Email</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->EMAIL}}</span>
+												</a>
+											</div>
+										   
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 col-lg-3">
+									<div class="d-flex justify-content-center">
+										<div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
+											<div class="menu-item">
+												<div class="menu-content pb-2">
+													<span class="menu-section text-muted text-uppercase fs-4 fw-bold">Sosial Media</span>
+												</div>
+											</div>
+											{{-- <div class="menu-item">
+												<a href="#" class="menu-link active border-3 border-start border-primary">
+													<span class="menu-title">All Questions</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">675</span>
+												</a>
+											</div> --}}
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Facebook</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FACEBOOK}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Instagram</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->INSTAGRAM}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Twitter</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TWITTER}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">WhatsApp</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->WHATSAPP}}</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 col-lg-3">
+									<div class="d-flex justify-content-center">
+										<div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
+											<div class="menu-item">
+												<div class="menu-content pb-2">
+													<span class="menu-section text-muted text-uppercase fs-4 fw-bold">Pintasan</span>
+												</div>
+											</div>
+											{{-- <div class="menu-item">
+												<a href="#" class="menu-link active border-3 border-start border-primary">
+													<span class="menu-title">All Questions</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">675</span>
+												</a>
+											</div> --}}
+											<div class="menu-item">
+												<a href="{{url('/')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Beranda</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="{{url('/kelas')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Kelas</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="{{url('/agenda')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Agenda</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="{{url('/about-us')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Tentang Kami</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
+
+					<div id="whatsapp-call-center" class="d-flex align-items-center align-middle">
+						<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" id="whatsapp-button">
+							<i class="fa-brands fa-whatsapp fa-4x" style="color: #25d366;"></i>
+							{{-- <span>WhatsApp</span> --}}
+						</a>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -615,6 +787,8 @@
 				</svg>
 			</span>
 		</div>
+
+		
 
 		<script>var hostUrl = "v1/";</script>
 		<script src="{{url('public/Tdashboard/v2/js/jquery-3.6.3.min.js')}}"></script>

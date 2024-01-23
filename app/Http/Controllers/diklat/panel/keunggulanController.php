@@ -62,11 +62,12 @@ class keunggulanController extends Controller
             return redirect()->route('create-keunggulan')->withErrors($validator)->withInput($request->all());
         }
 
-        $classBaru = 'fa-2x text-white me-4';
-        $icon = preg_replace('/<i\s+class="([^"]*)"/i', '<i class="$1 ' . $classBaru . '"', $request->icon);
+        // $classBaru = 'fa-2x text-white me-4';
+        // $icon = preg_replace('/<i\s+class="([^"]*)"/i', '<i class="$1 ' . $classBaru . '"', $request->icon);
 
         $store = new keunggulan_model();
-        $store->KEUNGGULAN_FONTAWESOME = $icon;
+        // $store->KEUNGGULAN_FONTAWESOME = $icon;
+        $store->KEUNGGULAN_FONTAWESOME = $request->icon;
         $store->KEUNGGULAN_JUDUL = $request->judul;
         $store->KEUNGGULAN_DESKRIPSI = $request->deskripsi;
         $store->Save();
@@ -114,12 +115,13 @@ class keunggulanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $classBaru = 'fa-2x text-white me-4';
-        $icon = preg_replace('/<i\s+class="([^"]*)"/i', '<i class="$1 ' . $classBaru . '"', $request->icon);
+        // $classBaru = 'fa-2x text-white me-4';
+        // $icon = preg_replace('/<i\s+class="([^"]*)"/i', '<i class="$1 ' . $classBaru . '"', $request->icon);
 
         $update = keunggulan_model::where('KEUNGGULAN_ID', $id)->first();
 
-        $update->KEUNGGULAN_FONTAWESOME = $icon;
+        // $update->KEUNGGULAN_FONTAWESOME = $icon;
+        $update->KEUNGGULAN_FONTAWESOME = $request->icon;
         $update->KEUNGGULAN_JUDUL = $request->judul;
         $update->KEUNGGULAN_DESKRIPSI = $request->deskripsi;
         $update->Save();

@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'aff8a486da4b36dfc72a9b56eb9e25b516ef8ac1',
+        'reference' => 'fa4f2ba0b471b885b537fe3860b587d78b8bc89e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -176,9 +176,9 @@
             'dev_requirement' => true,
         ),
         'guzzlehttp/guzzle' => array(
-            'pretty_version' => '6.5.8',
-            'version' => '6.5.8.0',
-            'reference' => 'a52f0440530b54fa079ce76e8c5d196a42cad981',
+            'pretty_version' => '7.8.1',
+            'version' => '7.8.1.0',
+            'reference' => '41042bc7ab002487b876a0683fc8dce04ddce104',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
@@ -412,7 +412,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'aff8a486da4b36dfc72a9b56eb9e25b516ef8ac1',
+            'reference' => 'fa4f2ba0b471b885b537fe3860b587d78b8bc89e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -741,6 +741,12 @@
             'install_path' => __DIR__ . '/../psr/http-client',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'psr/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
         ),
         'psr/http-factory' => array(
             'pretty_version' => '1.0.2',

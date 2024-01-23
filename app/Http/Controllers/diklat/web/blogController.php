@@ -18,7 +18,7 @@ class blogController extends Controller
         $berita = DB::table('berita')
             ->join('users', 'users.id', '=', 'berita.USERS_ID')
             ->orderBy('berita.created_at', 'desc')
-            ->get();
+            ->paginate(10);
 
         return view('amodule/diklat/web/blog/index', [
             'berita' => $berita

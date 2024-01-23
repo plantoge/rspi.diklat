@@ -99,7 +99,7 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
 });
 
 Route::group(['middleware' => ['checkrole:superadmin']], function(){
-    Route::get('dashboard', 'dashboardController@index');
+    Route::get('dashboard', 'DashboardController@index');
 
     // CRUD ROLE
     Route::get('role', 'roleController@index');
