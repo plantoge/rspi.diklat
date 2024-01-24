@@ -706,7 +706,8 @@
 						<form action="{{url('auth-post-signin')}}" method="post">
 							@csrf
 							<input type="text" name="email" class="form-control form-control-solid mb-8" placeholder="Email">
-							<input type="password" name="password" class="form-control form-control-solid mb-8" placeholder="Password">
+							<input type="password" name="password" class="form-control form-control-solid mb-1" placeholder="Password">
+							<a href="#" class="link-primary fs-6 fw-bold mb-8 float-end" data-bs-toggle="modal" data-bs-target="#modal_lupapassword">Lupa Password ?</a>
 							<button class="btn btn-md btn-bg-success w-100 fw-bold text-white">Sign In</button>
 						</form>
 						{{-- <button class="btn btn-md btn-bg-secondary w-100 fw-bold text-dark">Sign Up</button></button> --}}
@@ -721,6 +722,40 @@
 								<span class="form-check-label fw-bold text-muted">Allowed</span>
 							</label>
 						</div> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="modal_lupapassword" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog mw-650px">
+				<div class="modal-content">
+					<div class="modal-header pb-0 border-0 justify-content-end">
+						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+							<span class="svg-icon svg-icon-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+									<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+								</svg>
+							</span>
+						</div>
+					</div>
+					<div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
+						<div class="text-center mb-13">
+							<h1 class="mb-3">Lupa Password</h1>
+							<div class="text-muted fw-bold fs-5">Klik tautan disini jika belum punya 
+                            <a href="#" class="link-primary fw-bolder" data-bs-toggle="modal" data-bs-target="#modal_register">Daftar Akun</a>
+                        </div>
+						</div>
+						
+						<div class="separator d-flex flex-center mb-8">
+							<span class="text-uppercase bg-body fs-7 fw-bold text-muted px-3">atau</span>
+						</div>
+						<form action="{{url('/auth-reset-password')}}" method="post">
+							@csrf
+							<input type="text" name="email" class="form-control form-control-solid mb-8" placeholder="Email">
+							<button class="btn btn-md btn-bg-success w-100 fw-bold text-white">Submit</button>
+						</form>
 					</div>
 				</div>
 			</div>

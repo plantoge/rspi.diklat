@@ -91,4 +91,8 @@ class loginController extends Controller
     public function checksignin(){
         echo json_encode(auth()->check());
     }
+
+    public function resetpass(){
+        return view('layout/website/auth/masterReset');
+    }
 }

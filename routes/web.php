@@ -12,6 +12,7 @@ use App\Http\Controllers\diklat\panel\reportEventController;
 use App\Http\Controllers\diklat\panel\testimonyController;
 use App\Http\Controllers\diklat\web\blogController;
 use App\Http\Controllers\diklat\web\websiteController;
+use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -31,6 +32,8 @@ Route::get('/auth-sign-up', [loginController::class, 'indexregister'])->name('re
 Route::post('/auth-post-signin', [loginController::class, 'postlogin']);
 Route::post('/auth-post-signup', [loginController::class, 'postregister']);
 Route::get('/auth-signout', [loginController::class, 'signout']);
+Route::get('/auth-reset', [loginController::class, 'resetpass'])->name('reset-password');
+Route::post('/auth-reset-password', [ForgotPasswordController::class, 'sendlinkemail']);
 
 // dashboard Pegawai
 Route::get('/auth-login', 'AuthController@login');
