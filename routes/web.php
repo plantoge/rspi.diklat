@@ -33,7 +33,7 @@ Route::post('/auth-post-signin', [loginController::class, 'postlogin']);
 Route::post('/auth-post-signup', [loginController::class, 'postregister']);
 Route::get('/auth-signout', [loginController::class, 'signout']);
 Route::get('/auth-reset', [loginController::class, 'resetpass'])->name('reset-password');
-Route::post('/auth-reset-password', [ForgotPasswordController::class, 'sendlinkemail']);
+// Route::post('/auth-reset-password', [ForgotPasswordController::class, 'sendlinkemail']);
 
 // dashboard Pegawai
 Route::get('/auth-login', 'AuthController@login');

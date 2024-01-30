@@ -9,7 +9,7 @@
     <div class="row g-10">
         @foreach ($event as $kelas)
             <div class="col-md-4">
-                <div class="card-xl-stretch me-md-6">
+                <div class="card-xl-stretch me-md-6 p-5 shadow-sm border border-transparent rounded">
                     <a class="d-block overlay mb-4" data-fslightbox="lightbox-hot-sales" href="{{asset('storage/app/gambar_event/'.$kelas->EVENT_GAMBAR)}}">
                         <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-300px" style="background-image:url('{{asset('storage/app/gambar_event/'.$kelas->EVENT_GAMBAR)}}')"></div>
                         <div class="overlay-layer bg-dark card-rounded bg-opacity-25">

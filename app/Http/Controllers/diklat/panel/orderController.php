@@ -27,6 +27,8 @@ class orderController extends Controller
     // petugas
     public function antrianorder(){
         $order = DB::table('event_order')
+            ->select('event_order.*', 'users.*', 'event_itemorder.*', 'events.*')
+            ->selectRaw('event_order.created_at AS tgl_order')
             ->join('users','users.id','=','event_order.USERS_ID')
             ->join('event_itemorder', 'event_itemorder.ORDER_ID', '=', 'event_order.ORDER_ID')
             ->join('events','events.EVENT_ID','=','event_itemorder.EVENT_ID')

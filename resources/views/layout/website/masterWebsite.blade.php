@@ -707,7 +707,7 @@
 							@csrf
 							<input type="text" name="email" class="form-control form-control-solid mb-8" placeholder="Email">
 							<input type="password" name="password" class="form-control form-control-solid mb-1" placeholder="Password">
-							<a href="#" class="link-primary fs-6 fw-bold mb-8 float-end" data-bs-toggle="modal" data-bs-target="#modal_lupapassword">Lupa Password ?</a>
+							{{-- <a href="#" class="link-primary fs-6 fw-bold mb-8 float-end" data-bs-toggle="modal" data-bs-target="#modal_lupapassword">Lupa Password ?</a> --}}
 							<button class="btn btn-md btn-bg-success w-100 fw-bold text-white">Sign In</button>
 						</form>
 						{{-- <button class="btn btn-md btn-bg-secondary w-100 fw-bold text-dark">Sign Up</button></button> --}}

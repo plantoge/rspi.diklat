@@ -55,7 +55,8 @@
                                 {{$data->ITEMORDER_JUDUL_DIPILIH}}
                             </a>
                             <br>
-                            <span class="badge badge-info">{{$data->name}}</span> 
+                            <span class="badge badge-info mb-1">{{\Carbon\Carbon::parse($data->tgl_order)->format('d F Y h:i:s')}}</span> <br> 
+                            <span class="badge badge-info">{{$data->name}}</span>
                             <span class="badge badge-secondary">{{$data->phone}}</span> 
                         </td>    
                         <td>@matauang($data->ORDER_TOTAL)</td>    
