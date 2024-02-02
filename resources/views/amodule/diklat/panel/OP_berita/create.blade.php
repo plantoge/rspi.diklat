@@ -16,7 +16,8 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-berita/store')}}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{url('/panel-berita/store')}}" method="post" enctype="multipart/form-data"> --}}
+    <form id="forminput" method="post" enctype="multipart/form-data">
         @csrf
         <h2 class="pb-5">Buat Berita</h2>
         <div class="row">
@@ -27,9 +28,10 @@
                     <input type="text" id="title" name="title" class="form-control mb-2" placeholder="" value="{{old('title')}}" onchange="generateSlug()">
                     <input type="text" id="slug" name="slug" value="{{old('slug')}}" hidden>
                     <small class="text-muted" id="textSlug"></small>
-                    @error('title')
+                    <small id="titleError" class="text-danger"></small>
+                    {{-- @error('title')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">
@@ -39,9 +41,10 @@
                         <option value="Arsip">Arsip</option>
                         <option value="Publik">Publik</option>
                     </select>  
-                    @error('status')
+                    <small id="statusError" class="text-danger"></small>
+                    {{-- @error('status')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror      
+                    @enderror       --}}
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">
@@ -51,33 +54,36 @@
                         @foreach ($kategori as $kategori)
                             <option value="{{$kategori->BERITA_KATEGORI_ID}}" @if(old('kategori') == $kategori->BERITA_KATEGORI_ID) selected @endif>{{$kategori->BERITA_KATEGORI}}</option>
                         @endforeach
-                    </select>  
-                    @error('kategori')
+                    </select>
+                    <small id="kategoriError" class="text-danger"></small>  
+                    {{-- @error('kategori')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror      
+                    @enderror       --}}
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="form-label">Upload Gambar Utama</label>
                     <input type="file" id="gambar" name="gambar" class="form-control mb-2">
-                    @error('gambar')
+                    <small id="gambarError" class="text-danger"></small>
+                    {{-- @error('gambar')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12">
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="require form-label">Konten</label>
                     <textarea id="konten" name="konten" class="tox-target">{{old('konten')}}</textarea>
-                    @error('konten')
+                    <small id="kontenError" class="text-danger"></small>
+                    {{-- @error('konten')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror      
+                    @enderror       --}}
                 </div>
             </div>
 
             <div class="col-sm-12 col-lg-6">
-                <button class="btn btn-primary submit">Simpan</button>
+                <button id="submitButton" class="btn btn-primary submit">Simpan</button>
             </div>
         </div>
     </form>
@@ -90,6 +96,90 @@
 <script src="{{url('public/plugin/js/formatrupiah.js')}}"></script>
 <script src="{{url('public/Twebsite/v1/plugins/custom/ckeditor/ckeditor-inline.bundle.js')}}"></script>
 <script src="{{url('public/Twebsite/v1/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
+
+<script>
+    $('#submitButton').on('click', function(e) {
+        e.preventDefault();
+        let csrfToken = $('input[name="_token"]').val();
+
+        let file      = new FormData($('#forminput')[0]);
+        let konten    = tinymce.get('konten').getContent()
+        file.append('konten', konten)
+
+        $.ajax({
+            type: 'POST',
+            url: `{{url('/panel-berita/store')}}`,
+            data: file,
+
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            beforeSend: function() {
+                swal.fire({
+                title: 'Mohon Tunggu!',
+                html: 'Sedang mengirim data ke server',
+                didOpen: () => {
+                    swal.showLoading()
+                }
+                })
+            },
+            success:function(data){
+                swal.close();
+                console.log(data);    
+                
+                if(data.status_code == 422){
+                    let title = data.errors.title
+                    let gambar = data.errors.gambar
+                    let konten = data.errors.konten
+                    let status = data.errors.status
+                    let kategori = data.errors.kategori
+                    
+                    title    ? $('#titleError').html('<b>'+title+'</b>')       : $('#titleError').html('<b></b>') 
+                    gambar   ? $('#gambarError').html('<b>'+gambar+'</b>')     : $('#gambarError').html('<b></b>') 
+                    konten   ? $('#kontenError').html('<b>'+konten+'</b>')     : $('#kontenError').html('<b></b>') 
+                    status   ? $('#statusError').html('<b>'+status+'</b>')     : $('#statusError').html('<b></b>') 
+                    kategori ? $('#kategoriError').html('<b>'+kategori+'</b>') : $('#kategoriError').html('<b></b>') 
+
+                }else if(data.status_code == 200){
+                    Swal.fire({
+                        text: "Berhasil! " + data.message,
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok",
+                        customClass: {
+                            confirmButton: "btn btn-success"
+                        }
+                    }).then((result) => {
+                        // Jika tombol "OK" diklik, lakukan redirect
+                        if (result.isConfirmed) {
+                            window.location.href = `{{url('panel-berita')}}`;
+                        }
+                    });
+                }      
+            },
+            error: function(xhr, status, error) {
+                swal.close()                
+                console.log(status)
+                console.log(error)
+
+                Swal.fire({
+                    text: "ada yang salah, hubungi SIMRS",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                });
+            },
+        });
+
+    });
+</script>
+
 <script>
     tinymce.init({
         selector: "#konten",
@@ -117,7 +207,6 @@
       var title = $('#title').val();
       var slug = createSlug(title);
       
-      console.log("Generated Slug:", slug);
       $('#slug').val(slug);
       $('#textSlug').html('Slug: ' + slug);
     }

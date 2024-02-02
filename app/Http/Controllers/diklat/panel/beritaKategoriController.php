@@ -54,7 +54,12 @@ class beritaKategoriController extends Controller
         $validator = Validator::make($request->all(), $rule, $pesan);
 
         if ($validator->fails()) {
-            return redirect()->route('create-berita-kategori')->withErrors($validator)->withInput($request->all());
+            // PHP | return redirect()->route('create-berita-kategori')->withErrors($validator)->withInput($request->all());
+            
+            return response()->json([
+                'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
+                'errors' => $validator->errors(),
+            ]);
         }
 
         $store = new beritakategori_model();
@@ -62,10 +67,19 @@ class beritaKategoriController extends Controller
         $store->BERITA_KATEGORI_SLUG = $request->slug;
         $store->Save();
 
-        // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Kategori Ditambahkan');
-        return redirect('/panel-berita-kategori');
+        
+        $responseData = [
+            'status_code' => 200,
+            'message' => 'Data berhasil disimpan.',
+            'additionalData' => 'Nilai tambahan jika diperlukan.'
+        ];
+        
+        return response()->json($responseData, 200);
+        
+        // PHP | Logic for successful validation
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Kategori Ditambahkan');
+        // return redirect('/panel-berita-kategori');
     }
 
     /**

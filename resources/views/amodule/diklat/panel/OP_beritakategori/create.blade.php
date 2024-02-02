@@ -9,7 +9,8 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-berita-kategori/store')}}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{url('/panel-berita-kategori/store')}}" method="post" enctype="multipart/form-data"> --}}
+    <form id="formdata" method="post" enctype="multipart/form-data">
         @csrf
         <h2 class="pb-5">Buat Kategori</h2>
         <div class="row">
@@ -18,9 +19,10 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Title</label>
                     <input type="text" id="title" name="title" class="form-control mb-2" placeholder="" value="{{old('title')}}" onchange="generateSlug()">
-                    @error('title')
+                    <small id="titleError" class="text-danger"></small>
+                    {{-- @error('title')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
             <div class="col-sm-12 col-lg-12">
@@ -28,14 +30,15 @@
                     <label class="required form-label">slug</label>
                     <input type="text" id="slug" name="slug" class="form-control mb-2" placeholder="" value="{{old('slug')}}">
                     <div class="text-muted fs-7"></div>
-                    @error('slug')
+                    <small id="slugError" class="text-danger"></small>
+                    {{-- @error('slug')
                         <small class="text-danger"><b>{{$message}}</b></small>
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
 
             <div class="col-sm-12 col-lg-6">
-                <button class="btn btn-primary submit">Simpan</button>
+                <button id="submitButton" class="btn btn-primary">Simpan</button>
             </div>
         </div>
     </form>
@@ -49,32 +52,76 @@
 <script src="{{asset('public/plugin/js/formatrupiah.js')}}"></script>
 
 <script>
-    $('#jadwal_kegiatan').daterangepicker({
-        "drops": "auto",
-        "opens": "center",
-        "singleDatePicker": false,
-        "locale": {
-            "format": 'YYYY-MM-DD', // Ubah format tanggal sesuai keinginan Anda
-            "separator": ' / '
-        },
-        // "startDate": '',
-        // "endDate": ''
-    });
+    // document.getElementById('submitButton').addEventListener('click', function(e) {
+    $('#submitButton').on('click', function(e) {
+        e.preventDefault();
+        const formData = $('#formdata').serialize();
+        let csrfToken = $('input[name="_token"]').val();
 
-    tinymce.init({
-        selector: "#deskripsi", 
-        // height : "100",
-        branding: false
-    });
+        $.ajax({
+            type: 'POST',
+            url: `{{url('/panel-berita-kategori/store')}}`,
+            data: formData,
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            beforeSend: function() {
+                swal.fire({
+                title: 'Mohon Tunggu!',
+                html: 'Sedang mengirim data ke server',
+                didOpen: () => {
+                    swal.showLoading()
+                }
+                })
+            },
+            success:function(data){
+                swal.close();    
+                
+                if(data.status_code == 422){
+                    let title = data.errors.title
+                    let slug = data.errors.slug
+                    
+                    title    ? $('#titleError').html('<b>'+title+'</b>')       : $('#titleError').html('<b></b>') 
+                    slug     ? $('#slugError').html('<b>'+slug+'</b>')        : $('#slugError').html('<b></b>') 
+                }else if(data.status_code == 200){
+                    Swal.fire({
+                        text: "Berhasil",
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok",
+                        customClass: {
+                            confirmButton: "btn btn-success"
+                        }
+                    }).then((result) => {
+                        // Jika tombol "OK" diklik, lakukan redirect
+                        if (result.isConfirmed) {
+                            window.location.href = `{{url('panel-berita-kategori')}}`;
+                        }
+                    });
+                }      
+            },
+            error: function(xhr, status, error) {
+                swal.close()                
+                console.log(status)
+                console.log(error)
 
-    function formatIDR(element, field) {
-        var el      = $(element);
-        var parent  = el.parent().parent().parent();
-        var data    = parent.find(field).val();
-        var hasil   = prosesRupiah(data);
-        const nominal = parseInt(hasil.replace(/\./g, ''));
-        parent.find(field).val(hasil);
-    }
+                Swal.fire({
+                    text: "ada yang salah, hubungi SIMRS",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                });
+            },
+        });
+
+    });
+</script>
+
+<script>
 
     function generateSlug() {
       var title = $('#title').val();
@@ -87,14 +134,6 @@
 
     function createSlug(text) {
       return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
-    }
-
-    function getStatus() {
-      let status = document.getElementById('status');
-      let selectedValue = status.value;
-
-      // Menampilkan nilai (value) terpilih ke konsol
-      $(".submit").html(selectedValue);
     }
 </script>
 @endsection

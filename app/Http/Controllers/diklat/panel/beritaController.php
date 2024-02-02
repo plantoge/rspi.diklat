@@ -49,6 +49,8 @@ class beritaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all(), $request->konten);
+
         $rule = [
             'title' => ['required'],
             'slug' => ['required'],
@@ -72,7 +74,12 @@ class beritaController extends Controller
         $validator = Validator::make($request->all(), $rule, $pesan);
 
         if ($validator->fails()) {
-            return redirect()->route('create-berita')->withErrors($validator)->withInput($request->all());
+            // return redirect()->route('create-berita')->withErrors($validator)->withInput($request->all());
+            
+            return response()->json([
+                'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
+                'errors' => $validator->errors(),
+            ]);
         }
 
         // lolos validasi
@@ -93,10 +100,18 @@ class beritaController extends Controller
         $store->BERITA_GAMBAR = $filename;
         $store->Save();
 
+        $responseData = [
+            'status_code' => 200,
+            'message' => 'Data berhasil disimpan.',
+            'additionalData' => 'Nilai tambahan jika diperlukan.'
+        ];
+        
+        return response()->json($responseData, 200);
+
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Berita Ditambahkan');
-        return redirect('/panel-berita');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Berita Ditambahkan');
+        // return redirect('/panel-berita');
     }
 
     /**
