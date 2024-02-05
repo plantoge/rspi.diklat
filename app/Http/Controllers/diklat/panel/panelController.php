@@ -38,11 +38,26 @@ class panelController extends Controller
         $update->INSTAGRAM = $request->instagram;
         $update->TWITTER = $request->twitter;
         $update->WHATSAPP = $request->whatsapp;
-        $update->Save();
+        
+        // cek apakah ada data yang diubah
+        if($update->isDirty() == true){
+            
+            $update->Save();
+            
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data berhasil disimpan.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }else if($update->isDirty() == false){
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data tidak ada yang di ubah.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }
 
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Berhasil Update');
-        return redirect('/panel');
+        return response()->json($responseData, 200);
     }
 
     /**

@@ -48,7 +48,7 @@ Route::group(['middleware' => ['checkrole:superadmin|visitor|operator']], functi
     Route::post('/checkout-kelas-proses', [websiteController::class, 'store_cokelas']);
 
     Route::get('/panel', [panelController::class, 'panel']);
-    Route::post('/panel-informasi/store', [panelController::class, 'store_informasi']);
+    Route::patch('/panel-informasi/store', [panelController::class, 'store_informasi']);
     
     Route::get('/panel-testimony', [testimonyController::class, 'index']);
     Route::get('/panel-testimony/create', [testimonyController::class, 'create'])->name('create-testimony');
