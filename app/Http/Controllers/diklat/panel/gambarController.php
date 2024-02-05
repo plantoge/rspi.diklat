@@ -58,7 +58,11 @@ class gambarController extends Controller
         $validator = Validator::make($request->all(), $rule, $pesan);
 
         if ($validator->fails()) {
-            return redirect()->route('create-gambar')->withErrors($validator)->withInput($request->all());
+            // return redirect()->route('create-gambar')->withErrors($validator)->withInput($request->all());
+            return response()->json([
+                'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
+                'errors' => $validator->errors(),
+            ]);
         }
 
         // lolos validasi
@@ -74,10 +78,18 @@ class gambarController extends Controller
         $store->GAMBAR = $filename;
         $store->Save();
 
+        $responseData = [
+            'status_code' => 200,
+            'message' => 'Data berhasil disimpan.',
+            'additionalData' => 'Nilai tambahan jika diperlukan.'
+        ];
+        
+        return response()->json($responseData, 200);
+
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Event Ditambahkan');
-        return redirect('/panel-gambar');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Event Ditambahkan');
+        // return redirect('/panel-gambar');
     }
 
     /**
@@ -130,12 +142,31 @@ class gambarController extends Controller
             }
 
         $update->GAMBAR_KATEGORI = $request->kategori;
-        $update->Save();
+        
+        // cek apakah ada data yang diubah
+        if($update->isDirty() == true){
+            
+            $update->Save();
+            
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data berhasil disimpan.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }else if($update->isDirty() == false){
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data tidak ada yang di ubah.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }
+
+        return response()->json($responseData, 200);
 
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Event Diubah');
-        return redirect('/panel-gambar');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Event Diubah');
+        // return redirect('/panel-gambar');
     }
 
     /**

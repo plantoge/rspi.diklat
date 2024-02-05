@@ -9,7 +9,7 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-gambar/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
+    <form id="formsaya" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <h2 class="pb-5">Buat Events</h2>
@@ -20,10 +20,10 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Kategori</label>
                     <select class="form-select" id="kategori" name="kategori">
-                        <option value="Beranda">Beranda</option>
-                        <option value="Agenda">Agenda</option>
-                        <option value="SOTK">SOTK</option>
-                        <option value="TentangKami">TentangKami</option>
+                        <option value="Beranda" @if($gambar->GAMBAR_KATEGORI == 'Beranda') selected @endif>Beranda</option>
+                        <option value="Agenda" @if($gambar->GAMBAR_KATEGORI == 'Agenda') selected @endif>Agenda</option>
+                        <option value="SOTK" @if($gambar->GAMBAR_KATEGORI == 'SOTK') selected @endif>SOTK</option>
+                        <option value="TentangKami" @if($gambar->GAMBAR_KATEGORI == 'TentangKami') selected @endif>TentangKami</option>
                     </select>  
                 </div>
             </div>
@@ -103,5 +103,81 @@
       // Menampilkan nilai (value) terpilih ke konsol
       $(".submit").html(selectedValue);
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        // $('#submitButton').on('click', function(e) {
+        $('#formsaya').submit(function(e) {
+            e.preventDefault();
+            let csrfToken = $('input[name="_token"]').val();
+            let file      = new FormData($('#formsaya')[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: `{{url('/panel-gambar/'.$id.'/update')}}`,
+                data: file,
+
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                headers: {
+                    'X-HTTP-Method-Override': 'PATCH', //only route patch and delete
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                beforeSend: function() {
+                    swal.fire({
+                    title: 'Mohon Tunggu!',
+                    html: 'Sedang proses data ke server',
+                    didOpen: () => {
+                        swal.showLoading()
+                    }
+                    })
+                },
+                success:function(data){
+                    swal.close();
+                    
+                    if(data.status_code == 422){
+                        let gambar = data.errors.gambar
+                        
+                        gambar   ? $('#gambarError').html('<b>'+gambar+'</b>')     : $('#gambarError').html('<b></b>') 
+
+                    }else if(data.status_code == 200){
+                        Swal.fire({
+                            text: "Berhasil! " + data.message,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then((result) => {
+                            // Jika tombol "OK" diklik, lakukan redirect
+                            if (result.isConfirmed) {
+                                window.location.href = `{{url('panel-gambar')}}`;
+                            }
+                        });
+                    }      
+                },
+                error: function(xhr, status, error) {
+                    swal.close()                
+                    console.log(status)
+                    console.log(error)
+
+                    Swal.fire({
+                        text: "ada yang salah, hubungi SIMRS",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok",
+                        customClass: {
+                            confirmButton: "btn btn-primary"
+                        }
+                    });
+                },
+            });
+
+        });
+
+    })
 </script>
 @endsection

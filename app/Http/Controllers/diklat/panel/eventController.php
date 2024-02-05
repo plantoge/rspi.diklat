@@ -73,7 +73,12 @@ class eventController extends Controller
         $validator = Validator::make($request->all(), $rule, $pesan);
 
         if ($validator->fails()) {
-            return redirect()->route('create-event')->withErrors($validator)->withInput($request->all());
+            // return redirect()->route('create-event')->withErrors($validator)->withInput($request->all());
+
+            return response()->json([
+                'status_code' => 422, //422 | server meresponse tapi validasi tidak lolos
+                'errors' => $validator->errors(),
+            ]);
         }
 
         // lolos validasi
@@ -107,10 +112,18 @@ class eventController extends Controller
         $store->EVENT_ACTIVE = $request->status;
         $store->Save();
 
+        $responseData = [
+            'status_code' => 200,
+            'message' => 'Data berhasil disimpan.',
+            'additionalData' => 'Nilai tambahan jika diperlukan.'
+        ];
+        
+        return response()->json($responseData, 200);
+
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Event Ditambahkan');
-        return redirect('/events');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Event Ditambahkan');
+        // return redirect('/events');
 
     }
 
@@ -183,12 +196,31 @@ class eventController extends Controller
         $update->EVENT_JADWAL_AWAL = $jadwal_awal;
         $update->EVENT_JADWAL_AKHIR = $jadwal_akhir;
         $update->EVENT_ACTIVE = $request->status;
-        $update->Save();
+        
+        // cek apakah ada data yang diubah
+        if($update->isDirty() == true){
+            
+            $update->Save();
+            
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data berhasil disimpan.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }else if($update->isDirty() == false){
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data tidak ada yang di ubah.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }
+
+        return response()->json($responseData, 200);
 
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Event Diubah');
-        return redirect('/events');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Event Diubah');
+        // return redirect('/events');
     }
 
     /**

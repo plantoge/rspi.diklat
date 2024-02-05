@@ -9,7 +9,7 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-berita-kategori/'.$id.'/update')}}" method="post" enctype="multipart/form-data">
+    <form id="formsaya" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         <h2 class="pb-5">Ubah Events</h2>
@@ -72,5 +72,82 @@
       return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     }
 
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#formsaya').submit(function(e){
+            e.preventDefault();
+
+            let csrfToken = $('input[name="_token"]').val();
+            let file      = new FormData($('#formsaya')[0]);
+            
+            $.ajax({
+                type: 'POST',
+                url: `{{url('/panel-berita-kategori/'.$id.'/update')}}`,
+                data: file,
+
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                headers: {
+                    'X-HTTP-Method-Override': 'PATCH',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                beforeSend: function() {
+                    swal.fire({
+                    title: 'Mohon Tunggu!',
+                    html: 'Sedang proses data ke server',
+                    didOpen: () => {
+                        swal.showLoading()
+                    }
+                    })
+                },
+                success:function(data){
+                    swal.close();
+                    console.log(data);    
+                    
+                    if(data.status_code == 422){
+                        let title = data.errors.title
+                        let slug = data.errors.slug
+                        
+                        title    ? $('#titleError').html('<b>'+title+'</b>') : $('#titleError').html('<b></b>') 
+                        slug     ? $('#slugError').html('<b>'+slug+'</b>')   : $('#slugError').html('<b></b>') 
+
+                    }else if(data.status_code == 200){
+                        Swal.fire({
+                            text: data.message,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then((result) => {
+                            // Jika tombol "OK" diklik, lakukan redirect
+                            if (result.isConfirmed) {
+                                window.location.href = `{{url('panel-berita-kategori')}}`;
+                            }
+                        });
+                    }      
+                },
+                error: function(xhr, status, error) {
+                    swal.close()                
+                    console.log(status)
+                    console.log(error)
+
+                    Swal.fire({
+                        text: "ada yang salah, hubungi SIMRS",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok",
+                        customClass: {
+                            confirmButton: "btn btn-primary"
+                        }
+                    });
+                },
+            });
+        })
+    })
 </script>
 @endsection

@@ -64,6 +64,7 @@
             data: formData,
             dataType: 'json',
             headers: {
+                // 'X-HTTP-Method-Override': 'PATCH|DELETE', //only route patch and delete
                 'X-CSRF-TOKEN': csrfToken
             },
             beforeSend: function() {

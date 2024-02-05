@@ -9,7 +9,7 @@
 @section('konten')
 
 <div class="card-body pt-0">
-    <form action="{{url('/panel-gambar/store')}}" method="post" enctype="multipart/form-data">
+    <form id="formsaya" method="post" enctype="multipart/form-data">
         @csrf
         <h2 class="pb-5">Input Gambar</h2>
         <div class="row">
@@ -105,5 +105,81 @@
       // Menampilkan nilai (value) terpilih ke konsol
       $(".submit").html(selectedValue);
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        // $('#submitButton').on('click', function(e) {
+        $('#formsaya').submit(function(e) {
+            e.preventDefault();
+            let csrfToken = $('input[name="_token"]').val();
+            let file      = new FormData($('#formsaya')[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: `{{url('/panel-gambar/store')}}`,
+                data: file,
+
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                headers: {
+                    // 'X-HTTP-Method-Override': 'PATCH|DELETE', //only route patch and delete
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                beforeSend: function() {
+                    swal.fire({
+                    title: 'Mohon Tunggu!',
+                    html: 'Sedang proses data ke server',
+                    didOpen: () => {
+                        swal.showLoading()
+                    }
+                    })
+                },
+                success:function(data){
+                    swal.close();
+                    
+                    if(data.status_code == 422){
+                        let gambar = data.errors.gambar
+                        
+                        gambar   ? $('#gambarError').html('<b>'+gambar+'</b>')     : $('#gambarError').html('<b></b>') 
+
+                    }else if(data.status_code == 200){
+                        Swal.fire({
+                            text: "Berhasil! " + data.message,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok",
+                            customClass: {
+                                confirmButton: "btn btn-success"
+                            }
+                        }).then((result) => {
+                            // Jika tombol "OK" diklik, lakukan redirect
+                            if (result.isConfirmed) {
+                                window.location.href = `{{url('panel-gambar')}}`;
+                            }
+                        });
+                    }      
+                },
+                error: function(xhr, status, error) {
+                    swal.close()                
+                    console.log(status)
+                    console.log(error)
+
+                    Swal.fire({
+                        text: "ada yang salah, hubungi SIMRS",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok",
+                        customClass: {
+                            confirmButton: "btn btn-primary"
+                        }
+                    });
+                },
+            });
+
+        });
+
+    })
 </script>
 @endsection

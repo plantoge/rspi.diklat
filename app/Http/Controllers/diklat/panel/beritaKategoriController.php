@@ -121,12 +121,30 @@ class beritaKategoriController extends Controller
         $update = beritakategori_model::find($id);
         $update->BERITA_KATEGORI = $request->title;
         $update->BERITA_KATEGORI_SLUG = $request->slug;
-        $update->Save();
+        
+        if($update->isDirty() == true){
+            
+            $update->Save();
+            
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data berhasil disimpan.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }else if($update->isDirty() == false){
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data tidak ada yang di ubah.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }
+
+        return response()->json($responseData, 200);
 
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Kategori diubah');
-        return redirect('/panel-berita-kategori');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Kategori diubah');
+        // return redirect('/panel-berita-kategori');
     }
 
     /**

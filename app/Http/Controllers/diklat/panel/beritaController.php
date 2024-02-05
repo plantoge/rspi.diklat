@@ -180,12 +180,34 @@ class beritaController extends Controller
         $update->BERITA_KATEGORI_ID = $request->kategori;
         $update->BERITA_KONTEN = $request->konten;
         $update->USERS_ID = Auth::user()->id;
-        $update->Save();
+
+        // cek apakah ada data yang diubah
+        if($update->isDirty() == true){
+            
+            $update->Save();
+            
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data berhasil disimpan.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }else if($update->isDirty() == false){
+            $responseData = [
+                'status_code' => 200,
+                'message' => 'Data tidak ada yang di ubah.',
+                'additionalData' => 'Nilai tambahan jika diperlukan.'
+            ];
+        }
+
+        return response()->json($responseData, 200);
+        
+        // dd($update->getChanges()); //mengetahui kolom apa saja yang diubah
+        // dd($update->isDirty());  //mengetahui ada data yang diubah atau tidak. posisi dia harus di atas $update->save()
 
         // Logic for successful validation
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Berita Diubah');
-        return redirect('/panel-berita');
+        // session()->flash('keyword', 'TambahData');
+        // session()->flash('pesan', 'Berita Diubah');
+        // return redirect('/panel-berita');
     }
 
     /**
