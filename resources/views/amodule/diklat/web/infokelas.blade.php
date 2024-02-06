@@ -24,34 +24,34 @@
                     </div>
                 </div>
 
-                {{-- <div class="row my-10">
+                <div class="row my-10">
                     <div class="col-lg-3 col-6">
                         <div class="item text-center">
                             <h5>
                                 Kategori
                             </h5>
                             <p>
-                                <strong>8</strong> enrolled
+                                <span class="badge badge-primary">{{$kelas->EVENT_KATEGORI}}</span>
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
                         <div class="item text-center">
                             <h5>
-                                Member
+                                Awal
                             </h5>
                             <p>
-                                <strong>8</strong> enrolled
+                                {{\Carbon\Carbon::parse($kelas->EVENT_JADWAL_AWAL)->format('d/m/Y')}}
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
                         <div class="item text-center">
                             <h5>
-                                Member
+                                Akhir
                             </h5>
                             <p>
-                                <strong>8</strong> enrolled
+                                {{\Carbon\Carbon::parse($kelas->EVENT_JADWAL_AKHIR)->format('d/m/Y')}}
                             </p>
                         </div>
                     </div>
@@ -61,21 +61,21 @@
                                 Sertifikat
                             </h5>
                             <p>
-                                <strong>8</strong> enrolled
+                                -
                             </p>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 
                 <div class="row d-flex flex-row justify-content-center">
-                    <div class="col-sm-12 col-lg-5 px-10 my-10 d-flex flex-row align-items-center gap-2 justify-content-end">
+                    <div class="col-sm-12 col-lg-7 px-10 my-10 d-flex flex-row align-items-center gap-2 justify-content-end">
                         @if ($kelas->EVENT_GAMBAR)
-                        <img class="img-fluid" src="https://placehold.co/400x500/png" alt="" sizes="" srcset="">
-                        @else
                         <img class="img-fluid" src="{{asset('storage/app/gambar_event/'.$kelas->EVENT_GAMBAR)}}" alt="" sizes="" srcset="">
+                        @else
+                        <img class="img-fluid" src="https://placehold.co/400x500/png" alt="" sizes="" srcset="">
                         @endif
                     </div>
-                    <div class="col-sm-12 col-lg-7 px-10 my-10 d-fle flex-ro align-items-cente gap-2 justify-content-start">
+                    <div class="col-sm-12 col-lg-5 px-10 my-10 d-fle flex-ro align-items-cente gap-2 justify-content-start">
 
                         <div class="fw-bold w-100 fs-3 text-gray-600 text-dark mt-3 mb-5">
                             @if($kelas->EVENT_DISKON == 0)
@@ -94,7 +94,7 @@
                                 {!! $kelas->EVENT_DESKRIPSI_PANJANG !!}
                             </p>
                         </blockquote>
-                        <span class="badge badge-primary">Kategori</span>
+                        
                         <br>
                         <br>
                         <a class="btn btn-primary w-100" onclick="checkSignin('{{$slug}}', '{{$id}}')">Beli sekarang</a>
@@ -125,7 +125,6 @@
                 })
             });
             let data = await response.json();
-            console.log(data);
 
             if(data == false){
                 $('#modal_login').modal('show');
