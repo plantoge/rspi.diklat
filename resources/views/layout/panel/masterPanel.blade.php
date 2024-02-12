@@ -23,7 +23,8 @@
 		
 		@yield('css')
 	</head>
-	<body id="kt_body" style="background-image: url({{url('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled">
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled bg-white">
+	{{-- <body id="kt_body" style="background-image: url({{url('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled aside-enabled"> --}}
 		@include('layout.website.include.notif')
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">

@@ -94,12 +94,13 @@
 			}
 		</style>
 	</head>
-	<body id="kt_body" style="background-image: url({{asset('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled bg-white">
+	{{-- <body id="kt_body" style="background-image: url({{asset('public/Twebsite/v1/media/patterns/header-bg.png')}})" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled bg-white"> --}}
 		<div class="d-flex flex-column flex-root">
 			<div class="page d-flex flex-row flex-column-fluid">
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					
-					<div id="kt_header" class="header align-items-stretch" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+					<div id="kt_header" class="header align-items-stretch shadow-sm" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						<div class="container-xxl d-flex align-items-center">
 							<div class="d-flex align-items-center d-lg-none ms-n2 me-3" title="Show aside menu">
 								<div class="btn btn-icon btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
@@ -132,27 +133,27 @@
 
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/')}}'">
-													<span class="menu-title">Beranda</span>
+													<span class="menu-title text-dark">Beranda</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/kelas')}}'">
-													<span class="menu-title">Kelas</span>
+													<span class="menu-title text-dark">Kelas</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/agenda')}}'">
-													<span class="menu-title">Agenda</span>
+													<span class="menu-title text-dark">Agenda</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
-													<span class="menu-title">Tentang Kami</span>
+													<span class="menu-title text-dark">Tentang Kami</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/blog')}}'">
-													<span class="menu-title">Blog</span>
+													<span class="menu-title text-dark">Blog</span>
 												</span>
 											</div>
 											
