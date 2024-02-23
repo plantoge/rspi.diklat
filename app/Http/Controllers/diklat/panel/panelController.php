@@ -5,13 +5,14 @@ namespace App\Http\Controllers\diklat\panel;
 use App\Http\Controllers\Controller;
 use App\Model\diklat\infokontak_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class panelController extends Controller
 {
     public function panel()
     {
         $informasi = infokontak_model::find('001')->first();
-
+        
         return view('amodule/diklat/panel/panel', [
             'informasi' => $informasi
         ]);
@@ -38,6 +39,8 @@ class panelController extends Controller
         $update->INSTAGRAM = $request->instagram;
         $update->TWITTER = $request->twitter;
         $update->WHATSAPP = $request->whatsapp;
+        $update->ALAMAT_SATU = $request->alamat_satu;
+        $update->ALAMAT_DUA = $request->alamat_dua;
         
         // cek apakah ada data yang diubah
         if($update->isDirty() == true){

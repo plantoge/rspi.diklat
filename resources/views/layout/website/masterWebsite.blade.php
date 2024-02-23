@@ -133,27 +133,27 @@
 
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/')}}'">
-													<span class="menu-title text-dark">Beranda</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Beranda</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/kelas')}}'">
-													<span class="menu-title text-dark">Kelas</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Events</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/agenda')}}'">
-													<span class="menu-title text-dark">Agenda</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Agenda</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
-													<span class="menu-title text-dark">Tentang Kami</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Profil</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/blog')}}'">
-													<span class="menu-title text-dark">Blog</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Blog</span>
 												</span>
 											</div>
 											
@@ -448,7 +448,7 @@
 										@else	
 											<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 												<div class="d-flex align-items-center flex-wrap py-0">
-													<a href="#" class="btn btn-sm btn-custo btn-secondary btn-color-dark text-dark btn-active-color-succes my-0 me-5 me-lg-5" data-bs-toggle="modal" data-bs-target="#modal_login">Masuk</a>
+													<a href="#" class="btn btn-sm btn-custom btn-color-dark text-white btn-active-color-succes my-0 me-5 me-lg-5" data-bs-toggle="modal" data-bs-target="#modal_login" style="background-color: #00B9AD !important;">Masuk</a>
 												</div>
 											</div>
 										@endauth
@@ -476,7 +476,7 @@
 					<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
 						<div class="content flex-row-fluid" id="kt_content">
 							<div class="card">
-								<div class="card-body p-lg-17">
+								<div class="card-body p-lg-5">
 									
 									@yield('konten')
 
@@ -527,9 +527,11 @@
 											<div class="menu-item">
 												<img src="{{url('/public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-70px logo-sticky">
 												<p class="text-muted" style="text-align: justify !important;">
-													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni, labore, quae sequi in minima suscipit incidunt deleniti.
+													{{$informasi->ALAMAT_SATU}}
 												</p>
-												<h5 class="text-muted" style="text-align: justify !important;">Jl. Sunter Permai Raya No.2, Papanggo, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14340</h5>
+												<h5 class="text-muted" style="text-align: justify !important;">
+													{{$informasi->ALAMAT_DUA}}
+												</h5>
 											</div>
 										   
 										</div>

@@ -33,6 +33,8 @@ class infokontak_model extends Model
         'INSTAGRAM',
         'TWITTER',
         'WHATSAPP',
+        'ALAMAT_SATU',
+        'ALAMAT_DUA',
     ];
 
     protected static function boot()

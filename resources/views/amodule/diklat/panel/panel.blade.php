@@ -45,7 +45,11 @@
                         <input type="text" id="email" name="email" value="{{$informasi->EMAIL}}" class="form-control mb-2" placeholder="">
                         <small id="emailError" class="text-danger"></small>
                     </div>
-                    
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Deskripsi Footer</label>
+                        <input type="text" id="alamat_satu" name="alamat_satu" value="{{$informasi->ALAMAT_SATU}}" class="form-control mb-2" placeholder="">
+                        <small id="emailError" class="text-danger"></small>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
@@ -68,7 +72,11 @@
                         <input type="text" id="whatsapp" name="whatsapp" value="{{$informasi->WHATSAPP}}" class="form-control mb-2" placeholder="ex: 0812345678">
                         <small id="whatsappError" class="text-danger"></small>
                     </div>
-                    
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Alamat Footer</label>
+                        <input type="text" id="alamat_dua" name="alamat_dua" value="{{$informasi->ALAMAT_DUA}}" class="form-control mb-2" placeholder="">
+                        <small id="emailError" class="text-danger"></small>
+                    </div>
                 </div>
 
                 <div class="col sm-12 col-lg-6">

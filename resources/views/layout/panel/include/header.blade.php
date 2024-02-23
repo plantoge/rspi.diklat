@@ -1,4 +1,4 @@
-<div id="kt_header" class="header align-items-stretch shadow-sm" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+<div id="kt_header" class="header align-items-stretch shadow-sm bg-white" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
     <div class="container-xxl d-flex align-items-center">
         <div class="d-flex align-items-center d-lg-none ms-n2 me-3" title="Show aside menu">
             <div class="btn btn-icon btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">

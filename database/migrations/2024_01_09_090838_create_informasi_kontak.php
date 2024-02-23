@@ -33,6 +33,8 @@ class CreateInformasiKontak extends Migration
             $table->string('INSTAGRAM')->nullable();
             $table->string('TWITTER')->nullable();
             $table->string('WHATSAPP')->nullable();
+            $table->text('ALAMAT_SATU')->nullable();
+            $table->text('ALAMAT_DUA')->nullable();
             
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
