@@ -148,12 +148,12 @@
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
-													<span class="menu-title text-dark" style="color: #00B9AD !important;">Profil</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Profile</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/blog')}}'">
-													<span class="menu-title text-dark" style="color: #00B9AD !important;">Blog</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Fasilitas</span>
 												</span>
 											</div>
 											
@@ -551,34 +551,40 @@
 													<span class="menu-badge fs-7 fw-normal text-muted">675</span>
 												</a>
 											</div> --}}
-											<div class="menu-item">
+											{{-- <div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Telepon</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TELEPON}}</span>
 												</a>
-											</div>
-											<div class="menu-item">
+											</div> --}}
+											{{-- <div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Fax</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FAX}}</span>
 												</a>
-											</div>
-											<div class="menu-item">
+											</div> --}}
+											{{-- <div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Call Center</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->CALLCENTER}}</span>
 												</a>
-											</div>
-											<div class="menu-item">
+											</div> --}}
+											{{-- <div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Hotline</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->HOTLINE}}</span>
 												</a>
-											</div>
+											</div> --}}
 											<div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Email</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->EMAIL}}</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">WhatsApp</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->WHATSAPP}}</span>
 												</a>
 											</div>
 										   
@@ -599,30 +605,25 @@
 													<span class="menu-badge fs-7 fw-normal text-muted">675</span>
 												</a>
 											</div> --}}
-											<div class="menu-item">
+											{{-- <div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Facebook</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->FACEBOOK}}</span>
 												</a>
-											</div>
+											</div> --}}
+											{{-- <div class="menu-item">
+												<a href="#" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Twitter</span>
+													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TWITTER}}</span>
+												</a>
+											</div> --}}
 											<div class="menu-item">
 												<a href="#" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">Instagram</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->INSTAGRAM}}</span>
 												</a>
 											</div>
-											<div class="menu-item">
-												<a href="#" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Twitter</span>
-													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->TWITTER}}</span>
-												</a>
-											</div>
-											<div class="menu-item">
-												<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">WhatsApp</span>
-													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->WHATSAPP}}</span>
-												</a>
-											</div>
+											
 										</div>
 									</div>
 								</div>
@@ -647,7 +648,7 @@
 											</div>
 											<div class="menu-item">
 												<a href="{{url('/kelas')}}" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Kelas</span>
+													<span class="menu-title">Events</span>
 												</a>
 											</div>
 											<div class="menu-item">
@@ -657,7 +658,12 @@
 											</div>
 											<div class="menu-item">
 												<a href="{{url('/about-us')}}" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Tentang Kami</span>
+													<span class="menu-title">Profile</span>
+												</a>
+											</div>
+											<div class="menu-item">
+												<a href="{{url('/blog')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Fasilitas</span>
 												</a>
 											</div>
 										</div>

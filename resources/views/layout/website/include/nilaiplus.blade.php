@@ -1,6 +1,6 @@
 <div class="mb-18 pt-5">
     <div class="text-center mb-12">
-        <h3 class="fs-2hx text-dark mb-5">Akses Dari Manapun</h3>
+        {{-- <h3 class="fs-2hx text-dark mb-5">Akses Dari Manapun</h3> --}}
         <div class="fs-5 text-muted fw-bold">{{$informasi->DESKRIPSI_SINGKAT_POINTPLUS}}</div>
     </div>
     
