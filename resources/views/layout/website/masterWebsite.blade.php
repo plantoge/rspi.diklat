@@ -526,7 +526,7 @@
 										<div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold w-250px" id="#kt_aside_menu" data-kt-menu="true">
 											<div class="menu-item">
 												<img src="{{url('/public/Twebsite/v1/media/logos/logo-desc.png')}}" class="h-40px h-lg-70px logo-sticky">
-												<p class="text-muted" style="text-align: justify !important;">
+												<p class="text-muted">
 													{{$informasi->ALAMAT_SATU}}
 												</p>
 												<h5 class="text-muted" style="text-align: justify !important;">

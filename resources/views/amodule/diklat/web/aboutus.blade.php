@@ -16,7 +16,7 @@
 <div class="mb-18">
     <div class="mb-10">
         <div class="text-center mb-15">
-            <h3 class="fs-2hx text-dark mb-5">Tentang Kami</h3>
+            <h3 class="fs-2hx text-dark mb-5">Profile</h3>
             {{-- <div class="fs-5 text-muted fw-bold">
                 Within the last 10 years, we have sold over 100,000 admin theme copies that have been
                 <br />successfully deployed by small businesses to global enterprises
@@ -30,7 +30,8 @@
         <div class="col-sm-12 col-lg-12" >
             
             <div class="float-start">
-                <img src="https://placehold.co/500x600/png" style="display: inline-block;" class="me-5 card-rounded mw-100">
+                <img src="{{url('/storage/app/gambar_website/'.$profile->GAMBAR)}}" style="display: inline-block;" class="me-5 card-rounded mw-100 mb-10">
+                {{-- <img src="https://placehold.co/500x600/png" style="display: inline-block;" class="me-5 card-rounded mw-100"> --}}
             </div>
             <div class="fs-6 fw-bold text-gray-600">
                 {!! $informasi->DESKRIPSI_TENTANGKAMI !!}
