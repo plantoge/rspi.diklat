@@ -106,6 +106,7 @@
                     <label class="form-label">Ganti Gambar</label>
                     <input type="file" id="gambar" name="gambar" class="form-control mb-2">
                     <input type="text" id="gambar_lama" name="gambar_lama" value="{{$event->EVENT_GAMBAR}}" class="form-control mb-2" hidden>
+                    <small class="text-dark">2MB | jpeg | jpg | png</small>
                     <a href="{{url('storage/app/gambar_event/' . $event->EVENT_GAMBAR)}}" target="_blank" class="btn btn-link btn-sm">{{$event->EVENT_GAMBAR}}</a>
                     <small id="gambarError" class="text-danger"></small>
                     {{-- @error('gambar')

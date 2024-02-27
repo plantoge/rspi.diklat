@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             
-                            <div class="m-0">
+                            {{-- <div class="m-0">
                                 <div class="mb-3">
                                     <label for="bukti" class="required form-label">Upload bukti pembayaran</label>
                                     <input class="form-control" type="file" id="bukti" name="bukti">
@@ -74,7 +74,7 @@
                                 @error('bukti')
                                     <small class="text-danger"><b>{{$message}}</b></small>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end::Item-->
                         </div>
                         <!--end::Invoice sidebar-->
@@ -82,7 +82,12 @@
                     
                     <input type="text" name="id" value="{{$id}}" hidden>
                     <input type="text" name="slug" value="{{$slug}}" hidden>
-                    <button type="submit" class="btn btn-success w-100">Checkout Event</button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-success w-100"
+                        onclick="window.open('https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale', '_blank')"
+                    >Chat WhatsApp Admin Kami</button>
+                    {{-- <a target="_blank" href="https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale" class="btn btn-sm btn-success">Whatsapp</a> --}}
                 </div>
             </div>
             

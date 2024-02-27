@@ -103,7 +103,7 @@
 					<div id="kt_header" class="header align-items-stretch shadow-sm" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						<div class="container-xxl d-flex align-items-center">
 							<div class="d-flex align-items-center d-lg-none ms-n2 me-3" title="Show aside menu">
-								<div class="btn btn-icon btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
+								<div class="btn btn-icon btn-custom w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle" style="background-color: #00B9AD !important;">
 									<span class="svg-icon svg-icon-2x">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
@@ -582,7 +582,7 @@
 												</a>
 											</div>
 											<div class="menu-item">
-												<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" class="menu-link border-3 border-start border-transparent">
+												<a href="https://wa.me/+62{{$informasi->WHATSAPP}}" target="_blank" class="menu-link border-3 border-start border-transparent">
 													<span class="menu-title">WhatsApp</span>
 													<span class="menu-badge fs-7 fw-normal text-muted">{{$informasi->WHATSAPP}}</span>
 												</a>
@@ -675,7 +675,7 @@
 					</div>
 
 					<div id="whatsapp-call-center" class="d-flex align-items-center align-middle">
-						<a href="https://wa.me/{{$informasi->WHATSAPP}}" target="_blank" id="whatsapp-button">
+						<a href="https://wa.me/+62{{$informasi->WHATSAPP}}" target="_blank" id="whatsapp-button">
 							<i class="fa-brands fa-whatsapp fa-4x" style="color: #25d366;"></i>
 							{{-- <span>WhatsApp</span> --}}
 						</a>

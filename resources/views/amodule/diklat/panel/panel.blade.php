@@ -17,79 +17,110 @@
             @csrf
             @method('patch')
             <h2 class="pb-5">Data Informasi Website</h2>
-            <div class="row">
+            <div class="containe"> 
+            <div class="row row-cols-2">
                 
                 <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Telepon</label>
-                        <input type="text" id="telepon" name="telepon" value="{{$informasi->TELEPON}}" class="form-control mb-2" placeholder="">
+                        <input type="text" id="telepon" name="telepon" value="{{$informasi->TELEPON}}" class="form-control mb-2" placeholder="" disabled>
                         <small id="teleponError" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Fax</label>
-                        <input type="text" id="fax" name="fax" value="{{$informasi->FAX}}" class="form-control mb-2" placeholder="">
+                        <input type="text" id="fax" name="fax" value="{{$informasi->FAX}}" class="form-control mb-2" placeholder="" disabled>
                         <small id="faxError" class="text-danger"></small>
                     </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">    
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Call Center</label>
-                        <input type="text" id="callcenter" name="callcenter" value="{{$informasi->CALLCENTER}}" class="form-control mb-2" placeholder="">
+                        <input type="text" id="callcenter" name="callcenter" value="{{$informasi->CALLCENTER}}" class="form-control mb-2" placeholder="" disabled>
                         <small id="callcenterError" class="text-danger"></small>
                     </div>
+                </div>
+                
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Hotline</label>
-                        <input type="text" id="hotline" name="hotline" value="{{$informasi->HOTLINE}}" class="form-control mb-2" placeholder="">
+                        <input type="text" id="hotline" name="hotline" value="{{$informasi->HOTLINE}}" class="form-control mb-2" placeholder="" disabled>
                         <small id="hotlineError" class="text-danger"></small>
                     </div>
+                </div>
+                
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Email</label>
                         <input type="text" id="email" name="email" value="{{$informasi->EMAIL}}" class="form-control mb-2" placeholder="">
                         <small id="emailError" class="text-danger"></small>
                     </div>
+                </div>
+                
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Deskripsi Footer</label>
-                        <input type="text" id="alamat_satu" name="alamat_satu" value="{{$informasi->ALAMAT_SATU}}" class="form-control mb-2" placeholder="">
-                        <small id="emailError" class="text-danger"></small>
+                        <label class="required form-label">WhatsApp</label>
+                        <input type="text" id="whatsapp" name="whatsapp" value="{{$informasi->WHATSAPP}}" class="form-control mb-2" placeholder="ex: 812345678">
+                        <small id="whatsappError" class="text-danger"></small>
                     </div>
                 </div>
+                    
                 <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Facebook</label>
                         <input type="text" id="facebook" name="facebook" value="{{$informasi->FACEBOOK}}" class="form-control mb-2" placeholder="">
                         <small id="facebookError" class="text-danger"></small>
                     </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">    
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Instagram</label>
                         <input type="text" id="instagram" name="instagram" value="{{$informasi->INSTAGRAM}}" class="form-control mb-2" placeholder="">
                         <small id="instagramError" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Twitter</label>
                         <input type="text" id="twitter" name="twitter" value="{{$informasi->TWITTER}}" class="form-control mb-2" placeholder="">
                         <small id="twitterError" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">WhatsApp</label>
-                        <input type="text" id="whatsapp" name="whatsapp" value="{{$informasi->WHATSAPP}}" class="form-control mb-2" placeholder="ex: 0812345678">
-                        <small id="whatsappError" class="text-danger"></small>
-                    </div>
-                    <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Alamat Footer</label>
-                        <input type="text" id="alamat_dua" name="alamat_dua" value="{{$informasi->ALAMAT_DUA}}" class="form-control mb-2" placeholder="">
+                        <label class="required form-label">Deskripsi Footer</label>
+                        <input type="text" id="alamat_satu" name="alamat_satu" value="{{$informasi->ALAMAT_SATU}}" class="form-control mb-2" placeholder="">
                         <small id="emailError" class="text-danger"></small>
                     </div>
                 </div>
-
-                <div class="col sm-12 col-lg-6">
+                
+                <div class="col-sm-12 col-lg-6">
+                    <div class="mb-5 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Alamat Footer</label>
+                        <textarea name="alamat_dua" id="" rows="2" class="form-control mb-2" value="{{$informasi->ALAMAT_DUA}}">{{$informasi->ALAMAT_DUA}}</textarea>
+                        {{-- <input type="text" id="alamat_dua" name="alamat_dua" value="{{$informasi->ALAMAT_DUA}}" class="form-control mb-2" placeholder=""> --}}
+                        <small id="emailError" class="text-danger"></small>
+                    </div>
+                </div>
+                
+                <div class="col sm-12 col-lg-6">    
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Deskripsi Singkat Poin Plus</label>
                         <textarea name="deskripsi_singkat_poinplus" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_POINTPLUS}}">{{$informasi->DESKRIPSI_SINGKAT_POINTPLUS}}</textarea>
                         <small id="deskripsi_singkat_poinplus_error" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Deskripsi Singkat Event Beranda</label>
                         <textarea name="deskripsi_singkat_event_beranda" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_EVENT_BERANDA}}">{{$informasi->DESKRIPSI_SINGKAT_EVENT_BERANDA}}</textarea>
                         <small id="deskripsi_singkat_event_beranda_error" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Deskripsi Singkat Event</label>
                         <textarea name="deskripsi_singkat_event" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_EVENT}}">{{$informasi->DESKRIPSI_SINGKAT_EVENT}}</textarea>
@@ -102,11 +133,15 @@
                         <textarea name="deskripsi_singkat_testimony" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_TESTIMONY}}">{{$informasi->DESKRIPSI_SINGKAT_TESTIMONY}}</textarea>
                         <small id="deskripsi_singkat_testimony_error" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Deskripsi Singkat Agenda</label>
                         <textarea name="deskripsi_singkat_agenda" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}">{{$informasi->DESKRIPSI_SINGKAT_AGENDA}}</textarea>
                         <small id="deskripsi_singkat_agenda_error" class="text-danger"></small>
                     </div>
+                </div>
+                <div class="col sm-12 col-lg-6">
                     <div class="mb-5 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Deskripsi Berita / Blog</label>
                         <textarea name="deskripsi_singkat_berita" id="" rows="2" class="form-control mb-2" value="{{$informasi->DESKRIPSI_SINGKAT_BERITA}}">{{$informasi->DESKRIPSI_SINGKAT_BERITA}}</textarea>
@@ -114,6 +149,7 @@
                     </div>
                 </div>
 
+            </div>
             </div>
             
             <h2 class="pb-5 pt-5">Kata Sambutan Beranda</h2>

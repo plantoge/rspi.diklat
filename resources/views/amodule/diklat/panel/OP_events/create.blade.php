@@ -92,6 +92,7 @@
                     <label class="form-label">Upload Gambar</label>
                     <input type="file" id="gambar" name="gambar" class="form-control mb-2">
                     <small id="gambarError" class="text-danger"></small>
+                    <small class="text-dark">2MB | jpeg | jpg | png</small>
                     {{-- @error('gambar')
                         <small class="text-danger"><b>{{$message}}</b></small>
                     @enderror --}}

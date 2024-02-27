@@ -106,11 +106,13 @@ class websiteController extends Controller
 
     public function cokelas($slug, $id)
     {
+        $informasi = infokontak_model::where('INFO_ID', '001')->first();
         $event = event_model::where('EVENT_SLUG', $slug)->first();
 
         return view('amodule/diklat/web/cokelas', [
             'slug' => $slug,
             'id' => $id,
+            'informasi' => $informasi,
             'kelas' => $event,
         ]);
     }
@@ -121,20 +123,20 @@ class websiteController extends Controller
         $event_slug = $request->slug;
 
         // 1. validasi data upload file bukti--------------------------------------------------------------------------------------------
-        $rule = [
-            'bukti' => ['required', 'max:2048', 'mimes:jpeg,jpg,png'],
-        ];
+        // $rule = [
+        //     'bukti' => ['required', 'max:2048', 'mimes:jpeg,jpg,png'],
+        // ];
 
-        $pesan = [
-            'bukti.required' => 'Kolom bukti harus diisi.',
-            'bukti.max' => 'Kolom ini maksimal :max .',
-            'bukti.mimes' => 'Kolom ini harus berupa file dengan ekstensi jpeg, jpg, png.',
-        ];
+        // $pesan = [
+        //     'bukti.required' => 'Kolom bukti harus diisi.',
+        //     'bukti.max' => 'Kolom ini maksimal :max .',
+        //     'bukti.mimes' => 'Kolom ini harus berupa file dengan ekstensi jpeg, jpg, png.',
+        // ];
 
-        $validator = Validator::make($request->all(), $rule, $pesan);
-        if ($validator->fails()) {
-            return redirect( url('checkout-kelas/'.$event_slug.'/' . $event_id) )->withErrors($validator)->withInput($request->all());
-        }
+        // $validator = Validator::make($request->all(), $rule, $pesan);
+        // if ($validator->fails()) {
+        //     return redirect( url('checkout-kelas/'.$event_slug.'/' . $event_id) )->withErrors($validator)->withInput($request->all());
+        // }
         // ===============================================================================================================================
 
         // 2. tarik data event------------------------------------------------------------------------------------------------------------
@@ -148,12 +150,12 @@ class websiteController extends Controller
         // ===============================================================================================================================
         
         // 3. upload file bukti-----------------------------------------------------------------------------------------------------------
-        $filename = null;
-        if ($request->file('bukti')) {
-            $file         = $request->file('bukti'); 
-            $path         = $file->store('bukti_order', 'local'); // proses upload file
-            $filename = basename($path);
-        }
+        // $filename = null;
+        // if ($request->file('bukti')) {
+        //     $file         = $request->file('bukti'); 
+        //     $path         = $file->store('bukti_order', 'local'); // proses upload file
+        //     $filename = basename($path);
+        // }
         // ===============================================================================================================================
 
         // 4. buat order
@@ -161,7 +163,7 @@ class websiteController extends Controller
         $order->USERS_ID = Auth::user()->id;
         $order->ORDER_CODE = $this->generadeCode();
         $order->ORDER_TOTAL = $event->EVENT_HARGA - $event->EVENT_DISKON;
-        $order->ORDER_BUKTI = $filename;
+        $order->ORDER_BUKTI = null; //$filename;
         $order->ORDER_STATUS = 'Menunggu Konfirmasi';
         $order->save();
 
