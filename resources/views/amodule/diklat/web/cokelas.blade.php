@@ -86,7 +86,8 @@
                         type="submit" 
                         class="btn btn-success w-100"
                         onclick="window.open('https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale', '_blank')"
-                    >Chat WhatsApp Admin Kami</button>
+                        disabled
+                        >Chat WhatsApp Admin Kami</button>
                     {{-- <a target="_blank" href="https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale" class="btn btn-sm btn-success">Whatsapp</a> --}}
                 </div>
             </div>
