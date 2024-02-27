@@ -59,11 +59,13 @@ class websiteController extends Controller
         $sotk    = gambar_model::where('GAMBAR_KATEGORI', 'SOTK')->get();
         $profile = gambar_model::where('GAMBAR_KATEGORI', 'TentangKami')->first();
         $informasi = infokontak_model::where('INFO_ID', '001')->first();
+        $pointplus = keunggulan_model::all();
 
         return view('amodule/diklat/web/aboutus', [
             'informasi' => $informasi,
             'sotk' => $sotk,
-            'profile' => $profile
+            'profile' => $profile,
+            'pointplus' => $pointplus,
         ]);
     }
 

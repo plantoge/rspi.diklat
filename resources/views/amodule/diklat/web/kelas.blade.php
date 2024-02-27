@@ -40,9 +40,9 @@
 
                             </span>
                         </div>
-                        <div class="fs-6 fw-bolder mt-3">
-                            <a href="{{url('info-kelas/'.$kelas->EVENT_SLUG.'/'.$kelas->EVENT_ID)}}" class="btn btn-light-primary w-100">Gabung Kelas</a>
-                        </div>
+                        {{-- <div class="fs-6 fw-bolder mt-3">
+                            <a href="{{url('info-kelas/'.$kelas->EVENT_SLUG.'/'.$kelas->EVENT_ID)}}" class="btn btn-light-primary w-100">Gabung</a>
+                        </div> --}}
                     </div>
                 </div>
             </div>

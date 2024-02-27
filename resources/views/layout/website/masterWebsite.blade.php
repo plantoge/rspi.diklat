@@ -137,8 +137,8 @@
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3" onclick="window.location.href='{{url('/kelas')}}'">
-													<span class="menu-title text-dark" style="color: #00B9AD !important;">Events</span>
+												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Profile</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
@@ -147,13 +147,13 @@
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
-												<span class="menu-link py-3" onclick="window.location.href='{{url('/about-us')}}'">
-													<span class="menu-title text-dark" style="color: #00B9AD !important;">Profile</span>
+												<span class="menu-link py-3" onclick="window.location.href='{{url('/kelas')}}'">
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Events</span>
 												</span>
 											</div>
 											<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 												<span class="menu-link py-3" onclick="window.location.href='{{url('/blog')}}'">
-													<span class="menu-title text-dark" style="color: #00B9AD !important;">Fasilitas</span>
+													<span class="menu-title text-dark" style="color: #00B9AD !important;">Berita</span>
 												</span>
 											</div>
 											
@@ -483,7 +483,7 @@
 									@if(Request::segment(1) == null)
 
 										@include('layout.website.include.sambutan')
-										@include('layout.website.include.nilaiplus')
+										{{-- @include('layout.website.include.nilaiplus') --}}
 										@include('layout.website.include.berita')
 										@include('layout.website.include.katalog_awal')
 										@include('layout.website.include.testimoni')
@@ -647,8 +647,8 @@
 												</a>
 											</div>
 											<div class="menu-item">
-												<a href="{{url('/kelas')}}" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Events</span>
+												<a href="{{url('/about-us')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Profile</span>
 												</a>
 											</div>
 											<div class="menu-item">
@@ -657,13 +657,13 @@
 												</a>
 											</div>
 											<div class="menu-item">
-												<a href="{{url('/about-us')}}" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Profile</span>
+												<a href="{{url('/kelas')}}" class="menu-link border-3 border-start border-transparent">
+													<span class="menu-title">Events</span>
 												</a>
 											</div>
 											<div class="menu-item">
 												<a href="{{url('/blog')}}" class="menu-link border-3 border-start border-transparent">
-													<span class="menu-title">Fasilitas</span>
+													<span class="menu-title">Berita</span>
 												</a>
 											</div>
 										</div>

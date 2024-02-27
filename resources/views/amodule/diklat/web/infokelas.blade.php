@@ -97,7 +97,7 @@
                         
                         <br>
                         <br>
-                        <a class="btn btn-primary w-100" onclick="checkSignin('{{$slug}}', '{{$id}}')">Beli sekarang</a>
+                        <a class="btn btn-primary w-100" onclick="checkSignin('{{$slug}}', '{{$id}}')">Daftar</a>
                         {{-- href="{{url('checkout-kelas/'.$slug.'/'.$id)}}" --}}
                     </div>
                 </div>

@@ -39,6 +39,8 @@
         </div>
     </div>
 
+    @include('layout.website.include.nilaiplus')
+
     <div class="tns mt-10" style="direction: ltr">
         <div data-tns="true"  data-tns-nav-position="bottom" data-tns-mouse-drag="true" data-tns-controls="false">
         @if (count($sotk) >= 1)
