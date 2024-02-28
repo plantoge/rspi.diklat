@@ -70,6 +70,7 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Harga</label>
                     <input type="text" id="harga" name="harga" value="{{old('harga')}}" class="form-control mb-2" onkeyup="formatIDR(this, '#harga');">
+                    <small class="text-dark fw-bold">input 0 jika event Gratis/Free</small> <br>
                     <small id="hargaError" class="text-danger"></small>
                     {{-- @error('harga')
                         <small class="text-danger"><b>{{$message}}</b></small>
@@ -80,6 +81,7 @@
                 <div class="mb-5 fv-row fv-plugins-icon-container">
                     <label class="required form-label">Potongan</label>
                     <input type="text" id="diskon" name="diskon" value="{{old('diskon')}}" class="form-control mb-2" onkeyup="formatIDR(this, '#diskon');">
+                    <small class="text-dark fw-bold">input 0 jika tidak ada potongan</small> <br>
                     <small id="diskonError" class="text-danger"></small>
                     {{-- @error('diskon')
                         <small class="text-danger"><b>{{$message}}</b></small>
@@ -140,7 +142,7 @@
 @section('js')
 <script src="{{url('public/Twebsite/v1/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script src="{{url('public/Twebsite/v1/plugins/custom/tinymce/tinymce.bundle.js')}}"></script>
-<script src="{{asset('public/plugin/js/formatrupiah.js')}}"></script>
+<script src="{{url('public/Plugin/js/formatrupiah.js')}}"></script>
 
 <script>
     $('#jadwal_kegiatan').daterangepicker({

@@ -61,7 +61,19 @@
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Harga</div>
                                 <div class="fw-bolder fs-6 text-gray-800">
-                                    @matauang($kelas->EVENT_HARGA - $kelas->EVENT_DISKON)
+                                    @if($kelas->EVENT_HARGA == 0)
+                                        <span class="dw-bold"> Gratis</span>
+                                    @else
+                                        @if ($kelas->EVENT_DISKON == 0)
+                                            <span class="dw-bold"> Rp. @matauang($kelas->EVENT_HARGA)</span>
+                                        @else
+                                            @php 
+                                                $harga_diskon = $kelas->EVENT_HARGA - $kelas->EVENT_DISKON;
+                                            @endphp
+                                            {{-- <span class="fw-bold blinking-text text-danger"> Rp. @matauang($kelas->EVENT_HARGA)</span> --}}
+                                            <span class="dw-bold"> Rp. @matauang($harga_diskon)</span>
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                             
@@ -86,7 +98,6 @@
                         type="submit" 
                         class="btn btn-success w-100"
                         onclick="window.open('https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale', '_blank')"
-                        disabled
                         >Chat WhatsApp Admin Kami</button>
                     {{-- <a target="_blank" href="https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale" class="btn btn-sm btn-success">Whatsapp</a> --}}
                 </div>

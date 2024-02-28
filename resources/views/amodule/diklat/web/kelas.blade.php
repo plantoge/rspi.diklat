@@ -21,14 +21,18 @@
                         {{-- <div class="fs-6 text-gray-600 text-dark mt-0 mb-5 duabaris">{{$kelas->EVENT_DESKRIPSI_SINGKAT}}</div> --}}
 
                         <div class="fw-bold w-100 fs-3 text-gray-600 text-dark mt-3 mb-5">
-                            @if($kelas->EVENT_DISKON == 0)
-                                <span class="dw-bold"> Rp. @matauang($kelas->EVENT_HARGA)</span>
+                            @if($kelas->EVENT_HARGA == 0)
+                                <span class="dw-bold"> Gratis</span>
                             @else
-                                @php 
-                                    $harga_diskon = $kelas->EVENT_HARGA - $kelas->EVENT_DISKON;
-                                @endphp
-                                <span class="fw-bold blinking-text text-danger"> Rp. @matauang($kelas->EVENT_HARGA)</span>
-                                <span class="dw-bold"> Rp. @matauang($harga_diskon)</span>
+                                @if ($kelas->EVENT_DISKON == 0)
+                                    <span class="dw-bold"> Rp. @matauang($kelas->EVENT_HARGA)</span>
+                                @else
+                                    @php 
+                                        $harga_diskon = $kelas->EVENT_HARGA - $kelas->EVENT_DISKON;
+                                    @endphp
+                                    <span class="fw-bold blinking-text text-danger"> Rp. @matauang($kelas->EVENT_HARGA)</span>
+                                    <span class="dw-bold"> Rp. @matauang($harga_diskon)</span>
+                                @endif
                             @endif
                         </div>
                         <div class="fs-6 fw-bolder w-100">

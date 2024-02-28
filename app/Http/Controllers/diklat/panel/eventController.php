@@ -60,7 +60,7 @@ class eventController extends Controller
             'deskripsi_singkat.required' => 'Kolom Deskripsi harus diisi.',
             'kategori.required' => 'Kolom kategori harus diisi.',
             'harga.required' => 'Kolom harga harus diisi.',
-            'diskon.required' => 'Kolom harga harus diisi.',
+            'diskon.required' => 'Kolom diskon harus diisi.',
             'deskripsi.required' => 'Kolom deskripsi harus diisi.',
             'status.required' => 'Kolom status harus diisi.',
             'gambar.required' => 'Kolom ini harus diisi.',
