@@ -188,9 +188,22 @@ class websiteController extends Controller
         //     'text' => $message,
         // ]);
 
-        session()->flash('keyword', 'TambahData');
-        session()->flash('pesan', 'Berhasil Checkout Event. Silahkan untuk menunggu verifikasi pembayaran dari Operator');
-        return redirect('/order');
+        $text = 'Halo Admin, Saya berminat mengikuti event dengan Kode Order : #'.$order->ORDER_CODE.'. Terima kasih. ['.Auth::user()->name.']';
+
+        $textencode = urlencode($text);
+
+        $responseData = [
+            'status_code' => 200,
+            'message' => 'Sukses, halaman akan di alihkan ke Panel dan WhatsApp Admin Kami',
+            'data' => [
+                'code' => $order->ORDER_CODE, 
+                'item' => $itemorder->ITEMORDER_JUDUL_DIPILIH, 
+                'tagihan' => $order->ORDER_TOTAL, 
+                'textwhatsapp' => $textencode
+            ]
+        ];
+        
+        return response()->json($responseData, 200);
 
     }
 

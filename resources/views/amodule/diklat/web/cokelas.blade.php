@@ -1,7 +1,7 @@
 @extends('layout.website.masterWebsite')
 
 @section('konten')
-<form action="{{url('/checkout-kelas-proses')}}" method="post" enctype="multipart/form-data">
+<form id="formcheckout" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-18 pt-0">
         <div class="text-center mb-0">
@@ -97,7 +97,7 @@
                     <button 
                         type="submit" 
                         class="btn btn-success w-100"
-                        onclick="window.open('https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale', '_blank')"
+                        {{-- onclick="window.open('https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale', '_blank')" --}}
                         >Chat WhatsApp Admin Kami</button>
                     {{-- <a target="_blank" href="https://wa.me/+62{{$informasi->WHATSAPP}}?text=I%27m%20interested%20in%20your%20car%20for%20sale" class="btn btn-sm btn-success">Whatsapp</a> --}}
                 </div>
@@ -106,4 +106,107 @@
         </div>
     </div>
 </form>
+@endsection
+@section('js')
+
+<script>
+    $(document).ready(function() {
+        $('#formcheckout').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Berminat dengan Event ini ?",
+                text: "Halaman akan di arahkan ke Halaman WhatsApp Admin kami setelahnya",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Gak Jadi",
+            }).then((result) => {
+    
+                if (result.isConfirmed) {
+                    let csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    let file      = new FormData($('#formcheckout')[0]);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: `{{url('/checkout-kelas-proses')}}`,
+                        data: file,
+                        dataType: 'json',
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            // 'X-HTTP-Method-Override': 'DELETE', //only route patch and delete
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        beforeSend: function() {
+                            swal.fire({
+                            title: 'Mohon Tunggu!',
+                            html: 'Sedang proses data ke server',
+                            didOpen: () => {
+                                swal.showLoading()
+                            }
+                            })
+                        },
+                        success:function(data){
+                            swal.close();
+                            
+                            if(data.status_code == 404){
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                })
+                            }else if(data.status_code == 200){
+                                Swal.fire({
+                                    text: data.message,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok",
+                                    customClass: {
+                                        confirmButton: "btn btn-success"
+                                    }
+                                }).then((result) => {
+                                    // Jika tombol "OK" diklik, lakukan redirect
+                                    if (result.isConfirmed) {
+                                        text = data.data.textwhatsapp;
+                                        url = `https://wa.me/+62{{$informasi->WHATSAPP}}?text=${text}`;
+                                        window.open(url, '_blank')
+                                        window.location.href = `{{url('order')}}`;
+
+                                    }
+                                });
+                            }      
+                        },
+                        error: function(xhr, status, error) {
+                            swal.close()                
+                            console.log(status)
+                            console.log(error)
+    
+                            Swal.fire({
+                                text: "ada yang salah, hubungi SIMRS",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            });
+                        },
+                    });
+    
+                }
+            });
+    
+        })
+    
+    
+    })
+</script>
+
 @endsection
